@@ -75,7 +75,9 @@ bool BNF::Parse(const std::string& filename)
 				expressions.push_back(subdivided_expressions);
 			}
 
-			std::cout << grammar_line << std::endl;
+			// TODO: emplace
+			BNFNode node(symbol, expressions);
+			m_tree.AddNode(node);
 		}
 		grammar_file.close();
 		return true;

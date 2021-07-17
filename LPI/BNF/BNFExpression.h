@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 class BNFExpression
 {
@@ -7,13 +8,12 @@ public:
 	BNFExpression() = default;
 	~BNFExpression() = default;
 	
-	BNFExpression(const std::string& expression, const bool is_redirect);
+	BNFExpression(const std::vector<std::string>& expression);
 
 	bool operator==(const BNFExpression& rhs);
 
-	const std::string& GetExpression() const;
-	void SetExpression(const std::string& expression);
+	const std::vector<std::string>& GetExpression() const;
 private:
-	std::string m_expression;
-	bool m_is_redirect = false;
+	std::vector<std::string> m_expression;
+	std::vector<bool> m_is_redirect;
 };

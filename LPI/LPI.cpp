@@ -9,6 +9,7 @@ int main()
     std::cout << "Hello World!\n";
     BNF grammar;
     grammar.Parse("data/grammar.bnf");
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
