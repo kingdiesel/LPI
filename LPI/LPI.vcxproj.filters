@@ -12,6 +12,12 @@
     <Filter Include="Source Files\BNF">
       <UniqueIdentifier>{b2460a3e-1ad1-48a8-8c11-abdf56f1d8c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{9c89340d-8636-45d4-acc2-83cdc9255414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test">
+      <UniqueIdentifier>{edc15169-7583-42d2-9098-d594a766206f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LPI.cpp">
@@ -49,5 +55,13 @@
     <ClInclude Include="BNF\BNF.h">
       <Filter>Source Files\BNF</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\grammar.bnf">
+      <Filter>data</Filter>
+    </None>
+    <None Include="data\test\command.in">
+      <Filter>data\test</Filter>
+    </None>
   </ItemGroup>
 </Project>
