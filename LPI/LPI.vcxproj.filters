@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\BNF">
+      <UniqueIdentifier>{b2460a3e-1ad1-48a8-8c11-abdf56f1d8c6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BNF\BNFExpression.cpp">
+      <Filter>Source Files\BNF</Filter>
+    </ClCompile>
+    <ClCompile Include="BNF\BNFNode.cpp">
+      <Filter>Source Files\BNF</Filter>
+    </ClCompile>
+    <ClCompile Include="BNF\BNFSymbol.cpp">
+      <Filter>Source Files\BNF</Filter>
+    </ClCompile>
+    <ClCompile Include="BNF\BNFTree.cpp">
+      <Filter>Source Files\BNF</Filter>
+    </ClCompile>
+    <ClCompile Include="BNF\BNF.cpp">
+      <Filter>Source Files\BNF</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BNF\BNFExpression.h">
+      <Filter>Source Files\BNF</Filter>
+    </ClInclude>
+    <ClInclude Include="BNF\BNFNode.h">
+      <Filter>Source Files\BNF</Filter>
+    </ClInclude>
+    <ClInclude Include="BNF\BNFSymbol.h">
+      <Filter>Source Files\BNF</Filter>
+    </ClInclude>
+    <ClInclude Include="BNF\BNFTree.h">
+      <Filter>Source Files\BNF</Filter>
+    </ClInclude>
+    <ClInclude Include="BNF\BNF.h">
+      <Filter>Source Files\BNF</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
