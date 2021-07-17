@@ -18,6 +18,9 @@
     <Filter Include="data\test">
       <UniqueIdentifier>{edc15169-7583-42d2-9098-d594a766206f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Lexer">
+      <UniqueIdentifier>{c928ff49-7b5c-4472-a682-db823515017d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LPI.cpp">
@@ -38,6 +41,12 @@
     <ClCompile Include="BNF\BNF.cpp">
       <Filter>Source Files\BNF</Filter>
     </ClCompile>
+    <ClCompile Include="Lexer\Lexer.cpp">
+      <Filter>Source Files\Lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="Lexer\LexerToken.cpp">
+      <Filter>Source Files\Lexer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BNF\BNFExpression.h">
@@ -55,12 +64,18 @@
     <ClInclude Include="BNF\BNF.h">
       <Filter>Source Files\BNF</Filter>
     </ClInclude>
+    <ClInclude Include="Lexer\Lexer.h">
+      <Filter>Source Files\Lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="Lexer\LexerToken.h">
+      <Filter>Source Files\Lexer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\grammar.bnf">
-      <Filter>data</Filter>
-    </None>
     <None Include="data\test\command.in">
+      <Filter>data\test</Filter>
+    </None>
+    <None Include="data\grammar.bnf">
       <Filter>data\test</Filter>
     </None>
   </ItemGroup>

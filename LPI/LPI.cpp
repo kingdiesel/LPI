@@ -2,13 +2,19 @@
 //
 
 #include <iostream>
+#include "Lexer/Lexer.h"
 #include "BNF/BNF.h"
-
 int main()
 {
-    std::cout << "Hello World!\n";
     BNF grammar;
-    grammar.Parse("data/grammar.bnf");
+    const bool parsed_grammar = grammar.Parse("data/test/grammar.bnf");
+    if (!parsed_grammar)
+    {
+        std::cout << "FAILED!" << std::endl;
+    }
+
+    Lexer lexer;
+    lexer.ParseTokenFile("data/test/command.in", grammar);
     return 0;
 }
 
