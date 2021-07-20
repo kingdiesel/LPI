@@ -1,6 +1,7 @@
 #include "BNFSymbol.h"
 
-BNFSymbol::BNFSymbol(const std::string& symbol)
+BNFSymbol::BNFSymbol(const std::string& symbol):
+m_symbol(symbol)
 {
 }
 

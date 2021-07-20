@@ -59,8 +59,6 @@ bool BNF::Parse(const std::string& filename)
 				expression.erase(std::remove_if(expression.begin(), expression.end(), isspace), expression.end());
 			}
 
-			std::vector<std::vector<std::string>> expressions;
-
 			// subdivide expressions if needed
 			std::regex regex_subdivide_expressions("<[a-z_]+>|[A-Z]+");
 			for (const std::string& expression : split_by_expression)
@@ -72,14 +70,14 @@ bool BNF::Parse(const std::string& filename)
 					subdivided_expressions.push_back(first->str());
 					++first;
 				}
-				expressions.push_back(subdivided_expressions);
+				
+				// TODO: emplace
+				BNFNode node(symbol, subdivided_expressions);
+				m_tree.AddNode(node);
 			}
-
-			// TODO: emplace
-			BNFNode node(symbol, expressions);
-			m_tree.AddNode(node);
 		}
 		grammar_file.close();
+		m_tree.Populate();
 		return true;
 	}
 	return false;
