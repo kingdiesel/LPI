@@ -82,3 +82,8 @@ bool BNF::Parse(const std::string& filename)
 	}
 	return false;
 }
+
+bool BNF::Match(std::vector<std::string> tokens, std::vector<BNFMatchResult>& out_result)
+{
+	return false;
+}

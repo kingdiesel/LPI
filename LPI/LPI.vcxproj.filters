@@ -44,8 +44,8 @@
     <ClCompile Include="Lexer\Lexer.cpp">
       <Filter>Source Files\Lexer</Filter>
     </ClCompile>
-    <ClCompile Include="Lexer\LexerToken.cpp">
-      <Filter>Source Files\Lexer</Filter>
+    <ClCompile Include="BNF\BNFMatchResult.cpp">
+      <Filter>Source Files\BNF</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,8 +67,8 @@
     <ClInclude Include="Lexer\Lexer.h">
       <Filter>Source Files\Lexer</Filter>
     </ClInclude>
-    <ClInclude Include="Lexer\LexerToken.h">
-      <Filter>Source Files\Lexer</Filter>
+    <ClInclude Include="BNF\BNFMatchResult.h">
+      <Filter>Source Files\BNF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

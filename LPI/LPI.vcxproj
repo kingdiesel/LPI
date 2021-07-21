@@ -145,21 +145,21 @@
   <ItemGroup>
     <ClCompile Include="BNF\BNF.cpp" />
     <ClCompile Include="BNF\BNFExpression.cpp" />
+    <ClCompile Include="BNF\BNFMatchResult.cpp" />
     <ClCompile Include="BNF\BNFNode.cpp" />
     <ClCompile Include="BNF\BNFSymbol.cpp" />
     <ClCompile Include="BNF\BNFTree.cpp" />
     <ClCompile Include="Lexer\Lexer.cpp" />
-    <ClCompile Include="Lexer\LexerToken.cpp" />
     <ClCompile Include="LPI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BNF\BNF.h" />
     <ClInclude Include="BNF\BNFExpression.h" />
+    <ClInclude Include="BNF\BNFMatchResult.h" />
     <ClInclude Include="BNF\BNFNode.h" />
     <ClInclude Include="BNF\BNFSymbol.h" />
     <ClInclude Include="BNF\BNFTree.h" />
     <ClInclude Include="Lexer\Lexer.h" />
-    <ClInclude Include="Lexer\LexerToken.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\grammar.bnf" />
