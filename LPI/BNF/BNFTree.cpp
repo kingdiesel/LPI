@@ -25,11 +25,13 @@ void BNFTree::Populate()
 		{
 			if (expression_term.is_redirect)
 			{
+				BNFNode* new_node = new BNFNode(expression_term.term, std::vector<std::string>());
+				node.AddChild(new_node);
 				for (BNFNode& matching_node : m_nodes)
 				{
 					if (matching_node.GetSymbol() == expression_term.term)
 					{
-						node.AddChild(&matching_node);
+						new_node->AddChild(&matching_node);
 					}
 				}
 			}

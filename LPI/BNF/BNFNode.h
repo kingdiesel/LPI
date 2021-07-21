@@ -17,4 +17,5 @@ private:
 	BNFSymbol m_symbol;
 	BNFExpression m_expression;
 	std::vector<BNFNode*> m_children;
+	// TODO: track placeholder nodes
 };
