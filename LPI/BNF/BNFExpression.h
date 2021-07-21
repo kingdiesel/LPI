@@ -5,10 +5,10 @@
 struct BNFExpressionTerm
 {
 	BNFExpressionTerm(const std::string& in_term, const bool in_is_redirect) :
-		term(in_term),
+		value(in_term),
 		is_redirect(in_is_redirect)
 	{}
-	std::string term;
+	std::string value;
 	bool is_redirect = false;
 };
 
@@ -20,5 +20,5 @@ public:
 
 	const std::vector<BNFExpressionTerm>& GetExpressionTerms() const;
 private:
-	std::vector<BNFExpressionTerm> m_expression;
+	std::vector<BNFExpressionTerm> m_expression_terms;
 };
