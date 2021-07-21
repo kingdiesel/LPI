@@ -2,18 +2,23 @@
 #include <string>
 #include <vector>
 
+struct BNFExpressionTerm
+{
+	BNFExpressionTerm(const std::string& in_term, const bool in_is_redirect) :
+		term(in_term),
+		is_redirect(in_is_redirect)
+	{}
+	std::string term;
+	bool is_redirect = false;
+};
+
 class BNFExpression
 {
 public:
-	BNFExpression() = default;
-	~BNFExpression() = default;
-	
+	BNFExpression() = delete;
 	BNFExpression(const std::vector<std::string>& expression);
 
-	bool operator==(const BNFExpression& rhs);
-
-	const std::vector<std::string>& GetExpression() const;
+	const std::vector<BNFExpressionTerm>& GetExpressionTerms() const;
 private:
-	std::vector<std::string> m_expression;
-	std::vector<bool> m_is_redirect;
+	std::vector<BNFExpressionTerm> m_expression;
 };

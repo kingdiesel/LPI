@@ -5,9 +5,14 @@ m_symbol(symbol)
 {
 }
 
-bool BNFSymbol::operator==(const BNFSymbol& rhs)
+bool BNFSymbol::operator==(const BNFSymbol& rhs) const
 {
 	return m_symbol == rhs.m_symbol;
+}
+
+bool BNFSymbol::operator==(const std::string& rhs) const
+{
+	return m_symbol == rhs;
 }
 
 const std::string& BNFSymbol::GetSymbol() const

@@ -1,25 +1,14 @@
 #include "BNFExpression.h"
 
-BNFExpression::BNFExpression(const std::vector<std::string>& expression) :
-	m_expression(expression)
+BNFExpression::BNFExpression(const std::vector<std::string>& expression)
 {
-	// TODO unique pointer to expression so we don't make copies
-	m_is_redirect.resize(m_expression.size());
-	for (int i = 0; i < m_expression.size(); ++i)
+	for (const std::string& expression_term : expression)
 	{
-		if (m_expression[i].find("<") == 0)
-		{
-			m_is_redirect[i] = true;
-		}
+		m_expression.emplace_back(expression_term, expression_term.find("<") == 0);
 	}
 }
 
-bool BNFExpression::operator==(const BNFExpression& rhs)
-{
-	return m_expression == rhs.m_expression;
-}
-
-const std::vector<std::string>& BNFExpression::GetExpression() const
+const std::vector<BNFExpressionTerm>& BNFExpression::GetExpressionTerms() const
 {
 	return m_expression;
 }

@@ -4,12 +4,11 @@
 class BNFSymbol
 {
 public:
-	BNFSymbol() = default;
-	~BNFSymbol() = default;
-
+	BNFSymbol() = delete;
 	BNFSymbol(const std::string& symbol);
 
-	bool operator==(const BNFSymbol& rhs);
+	bool operator==(const BNFSymbol& rhs) const;
+	bool operator==(const std::string& rhs) const;
 
 	const std::string& GetSymbol() const;
 	void SetSymbol(const std::string& symbol);

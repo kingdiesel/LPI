@@ -5,15 +5,14 @@
 class BNFNode
 {
 public:
-	BNFNode() = default;
+	BNFNode() = delete;
 	BNFNode(const std::string& symbol, const std::vector<std::string>& expressions);
-
-	~BNFNode() = default;
+	
 	const BNFSymbol& GetSymbol() const;
-	BNFSymbol& GetSymbol();
-
+	const BNFExpression& GetExpression() const;
+	
 	void AddChild(BNFNode* node);
-
+	BNFNode* FindTreeNode(const std::string& symbol);
 private:
 	BNFSymbol m_symbol;
 	BNFExpression m_expression;

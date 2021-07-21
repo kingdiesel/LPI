@@ -12,12 +12,30 @@ const BNFSymbol& BNFNode::GetSymbol() const
 	return m_symbol;
 }
 
-BNFSymbol& BNFNode::GetSymbol()
+const BNFExpression& BNFNode::GetExpression() const
 {
-	return m_symbol;
+	return m_expression;
 }
 
 void BNFNode::AddChild(BNFNode* node)
 {
 	assert(std::find(m_children.begin(), m_children.end(), node) == m_children.end());
+	assert(node != nullptr);
+	m_children.push_back(node);
+}
+
+BNFNode* BNFNode::FindTreeNode(const std::string& symbol)
+{
+	for (BNFNode* child : m_children)
+	{
+		if (child->GetSymbol() == symbol)
+		{
+			return child;
+		}
+		else
+		{
+			return child->FindTreeNode(symbol);
+		}
+	}
+	return nullptr;
 }
