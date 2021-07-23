@@ -42,6 +42,49 @@ BNFNode* BNFNode::FindTreeNode(const std::string& symbol)
 
 bool BNFNode::Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
 {
+	if (IsLeafNode())
+	{
+		// if i got to a leaf node, i should only be matching single tokens
+		assert(tokens.size() == 1);
+		const bool matched = tokens[0] == m_expression.GetExpressionTerms()[0].value;
+		if (matched)
+		{
+			out_result.emplace_back(m_symbol, m_expression.GetExpressionTerms()[0]);
+			return true;
+		}
+	}
+	else if (IsPlaceholder())
+	{
+		// placeholder is a node that split an expression
+		for (BNFNode* child : m_children)
+		{
+			// this expression matches the number of terms, so we should attempt matching
+			if (child->GetExpression().GetNumTerms() == tokens.size())
+			{
+				const bool matched = child->Match(tokens, out_result);
+				if (matched)
+				{
+					return true;
+				}
+			}
+		}
+	}
+	else
+	{
+		// try to match terms one by one
+		bool all_matched = true;
+		for (int i = 0; i < tokens.size() && all_matched; ++i)
+		{
+			std::vector<std::string> token;
+			token.push_back(tokens[i]);
+			all_matched = all_matched && m_children[i]->Match(token, out_result);
+		}
+
+		if (all_matched)
+		{
+			return true;
+		}
+	}
 	return false;
 }
 

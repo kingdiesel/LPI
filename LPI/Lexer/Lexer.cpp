@@ -24,8 +24,21 @@ void Lexer::ParseTokenFile(const std::string& filename, BNF& grammar)
 				std::sregex_token_iterator()
 			);
 
-			std::vector<BNFMatchResult> result;
-			const bool matched = grammar.Match(tokens, result);
+			std::vector<BNFMatchResult> results;
+			const bool matched = grammar.Match(tokens, results);
+			if (matched)
+			{
+				std::cout << token_line << " matched to\n";
+				for (const BNFMatchResult& result : results)
+				{
+					std::cout << "\t" << result.m_symbol.GetSymbol() << ":" << result.m_expression_term.value << std::endl;
+				}
+				std::cout << std::endl;
+			}
+			else
+			{
+				std::cout << token_line << " was not matched." << std::endl;
+			}
 		}
 		token_file.close();
 	}

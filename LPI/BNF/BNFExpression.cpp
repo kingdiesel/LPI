@@ -8,6 +8,11 @@ BNFExpression::BNFExpression(const std::vector<std::string>& expression)
 	}
 }
 
+int BNFExpression::GetNumTerms() const
+{
+	return static_cast<int>(m_expression_terms.size());
+}
+
 const std::vector<BNFExpressionTerm>& BNFExpression::GetExpressionTerms() const
 {
 	return m_expression_terms;

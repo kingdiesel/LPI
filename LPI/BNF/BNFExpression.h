@@ -19,6 +19,8 @@ public:
 	BNFExpression() = delete;
 	BNFExpression(const std::vector<std::string>& expression);
 
+	int GetNumTerms() const;
+
 	const std::vector<BNFExpressionTerm>& GetExpressionTerms() const;
 private:
 	std::vector<BNFExpressionTerm> m_expression_terms;
