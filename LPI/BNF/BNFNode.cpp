@@ -39,3 +39,18 @@ BNFNode* BNFNode::FindTreeNode(const std::string& symbol)
 	}
 	return nullptr;
 }
+
+bool BNFNode::Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
+{
+	return false;
+}
+
+bool BNFNode::IsPlaceholder() const
+{
+	return m_expression.GetExpressionTerms().size() == 0;
+}
+
+bool BNFNode::IsLeafNode() const
+{
+	return m_children.size() == 0;
+}

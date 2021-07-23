@@ -4,6 +4,7 @@
 
 struct BNFExpressionTerm
 {
+	BNFExpressionTerm() = delete;
 	BNFExpressionTerm(const std::string& in_term, const bool in_is_redirect) :
 		value(in_term),
 		is_redirect(in_is_redirect)
