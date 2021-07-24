@@ -1,4 +1,4 @@
 # LPI
 Lexer Parser Interpreter
 
-![build](https://github.com/kingdiesel/LPI/actions/workflows/MSBuild/badge.svg)
+![MSBuild Actions Status](https://github.com/kingdiesel/LPI/workflows/msbuild/badge.svg)](https://github.com/kingdiesel/LPI/build)
