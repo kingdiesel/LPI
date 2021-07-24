@@ -39,5 +39,5 @@ jobs:
 
     - name: Run VSTest
       id: run_vstest
-      working-directory: $\x64\Debug\
-      run: vstest.console.exe /Platform:x64 .\LPITest.dll
+      working-directory: $${{env.SOLUTION_FILE_PATH}}\x64\Debug\
+      run: vstest.console.exe /Platform:x64 .\LPI.exe
