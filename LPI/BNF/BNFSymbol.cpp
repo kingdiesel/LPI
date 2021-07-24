@@ -15,6 +15,16 @@ bool BNFSymbol::operator==(const std::string& rhs) const
 	return m_symbol == rhs;
 }
 
+bool BNFSymbol::operator!=(const BNFSymbol& rhs) const
+{
+	return !(*this == rhs);
+}
+
+bool BNFSymbol::operator!=(const std::string& rhs) const
+{
+	return !(*this == rhs);
+}
+
 const std::string& BNFSymbol::GetSymbol() const
 {
 	return m_symbol;

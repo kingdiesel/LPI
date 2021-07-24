@@ -9,6 +9,9 @@ public:
 
 	bool operator==(const BNFSymbol& rhs) const;
 	bool operator==(const std::string& rhs) const;
+	
+	bool operator!=(const BNFSymbol& rhs) const;
+	bool operator!=(const std::string& rhs) const;
 
 	const std::string& GetSymbol() const;
 	void SetSymbol(const std::string& symbol);
