@@ -1,7 +1,7 @@
 # LPI
 Lexer Parser Interpreter intended for use in creating adventure games
 
-![Build](https://github.com/kingdiesel/LPI/workflows/MSBuild/badge.svg)
+![BuildTest](https://github.com/kingdiesel/LPI/workflows/MSBuild/badge.svg)
 
 Takes a grammar file in standard [BNF format](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form):
 ```
