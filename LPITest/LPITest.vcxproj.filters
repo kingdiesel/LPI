@@ -8,6 +8,9 @@
     <ClCompile Include="BNF\TestBNFExpression.cpp">
       <Filter>BNF</Filter>
     </ClCompile>
+    <ClCompile Include="BNF\TestBNFNode.cpp">
+      <Filter>BNF</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

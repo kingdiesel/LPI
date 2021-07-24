@@ -14,12 +14,11 @@ public:
 	
 	void AddChild(BNFNode* node);
 	BNFNode* FindTreeNode(const std::string& symbol);
-	bool Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
+	bool Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
 private:
 	bool IsPlaceholder() const;
 	bool IsLeafNode() const;
 	BNFSymbol m_symbol;
 	BNFExpression m_expression;
 	std::vector<BNFNode*> m_children;
-	// TODO: track placeholder nodes
 };

@@ -40,7 +40,7 @@ BNFNode* BNFNode::FindTreeNode(const std::string& symbol)
 	return nullptr;
 }
 
-bool BNFNode::Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
+bool BNFNode::Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
 {
 	if (IsLeafNode())
 	{

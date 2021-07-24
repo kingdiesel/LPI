@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BNF/BNFExpression.cpp"
+#include <gtest/gtest.h>
 namespace TestBNFExpressionStrings
 {
 	const std::vector<std::string> one_expression{ "SOME_VERB" };

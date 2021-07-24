@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BNF/BNFSymbol.h"
 #include "BNF/BNFSymbol.cpp"
+#include <gtest/gtest.h>
 
 namespace TestBNFSymbolStrings
 {
