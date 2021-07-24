@@ -33,6 +33,6 @@ TEST(TestBNFExpression, TestRedirect)
 	BNFExpression redirect_expression(two_redirect_expressions);
 	for (const BNFExpressionTerm& term : redirect_expression.GetExpressionTerms())
 	{
-		EXPECT_TRUE(term.is_redirect);
+		EXPECT_TRUE(term.is_redirect);asdf
 	}
 }
