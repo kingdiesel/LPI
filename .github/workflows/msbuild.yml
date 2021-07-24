@@ -37,4 +37,4 @@ jobs:
     
     - name: Test
       working-directory: ${{env.SOLUTION_FILE_PATH}}/x64/${{matrix.configurations}}
-      run: LPITest.exe
+      run: ./LPITest.exe
