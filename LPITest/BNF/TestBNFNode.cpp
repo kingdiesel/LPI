@@ -14,7 +14,7 @@ TEST(TestBNFNode, TestConstructor)
 	using namespace TestBNFNodeStrings;
 	BNFNode node(test_symbol, two_expressions);
 	EXPECT_TRUE(node.GetSymbol() == test_symbol);
-	ASSERT_TRUE(node.GetExpression().GetExpressionTerms().size() == 1);
+	ASSERT_TRUE(node.GetExpression().GetExpressionTerms().size() == 2);
 	EXPECT_TRUE(node.GetExpression().GetExpressionTerms()[0].value == two_expressions[0]);
 	EXPECT_TRUE(node.GetExpression().GetExpressionTerms()[1].value == two_expressions[1]);
 }
