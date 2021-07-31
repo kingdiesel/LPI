@@ -130,3 +130,85 @@ TEST(TestLexer, TestIntermediateTokenMatch)
 		EXPECT_TRUE(result[1].m_expression_term.value == "FROG");
 	}
 }
+
+TEST(TestLexer, TestAdvancedTokenMatch)
+{
+	BNF grammar;
+	const bool parsed_grammar = grammar.ParseString(TestLexerStrings::advanced_grammar);
+	EXPECT_TRUE(parsed_grammar);
+
+	Lexer lexer;
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("LOOK", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 1);
+		EXPECT_TRUE(result[0].m_symbol == "<unary_verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "LOOK");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("PICKUP KEY", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 2);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "PICKUP");
+		EXPECT_TRUE(result[1].m_symbol == "<noun_object>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "KEY");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("WALK SOUTH", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 2);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "WALK");
+		EXPECT_TRUE(result[1].m_symbol == "<noun_direction>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "SOUTH");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("GIVE FROG", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 2);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "GIVE");
+		EXPECT_TRUE(result[1].m_symbol == "<noun_animal>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "FROG");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("PICKUP BLUE FROG", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 3);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "PICKUP");
+		EXPECT_TRUE(result[1].m_symbol == "<adjective>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "BLUE");
+		EXPECT_TRUE(result[2].m_symbol == "<noun_animal>");
+		EXPECT_TRUE(result[2].m_expression_term.value == "FROG");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("INSERT RUSTY KEY INTO OLD LOCK", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 6);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "INSERT");
+		EXPECT_TRUE(result[1].m_symbol == "<adjective>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "RUSTY");
+		EXPECT_TRUE(result[2].m_symbol == "<noun_object>");
+		EXPECT_TRUE(result[2].m_expression_term.value == "KEY");
+		EXPECT_TRUE(result[3].m_symbol == "<preposition>");
+		EXPECT_TRUE(result[3].m_expression_term.value == "INTO");
+		EXPECT_TRUE(result[4].m_symbol == "<adjective>");
+		EXPECT_TRUE(result[4].m_expression_term.value == "OLD");
+		EXPECT_TRUE(result[5].m_symbol == "<noun_object>");
+		EXPECT_TRUE(result[5].m_expression_term.value == "LOCK");
+	}
+}
