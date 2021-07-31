@@ -39,7 +39,7 @@ void BNFTree::Populate()
 	}
 }
 
-bool BNFTree::Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
+bool BNFTree::Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
 {
 	return m_tree_root->Match(tokens, out_result);
 }

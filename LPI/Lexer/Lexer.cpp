@@ -15,17 +15,8 @@ void Lexer::ParseTokenFile(const std::string& filename, BNF& grammar)
 		while (token_file.good())
 		{
 			std::getline(token_file, token_line);
-			
-			// split by spaces
-			std::regex regex_split_spaces("\\s");
-			std::vector<std::string> tokens
-			(
-				std::sregex_token_iterator(token_line.begin(), token_line.end(), regex_split_spaces, -1),
-				std::sregex_token_iterator()
-			);
-
 			std::vector<BNFMatchResult> results;
-			const bool matched = grammar.Match(tokens, results);
+			const bool matched = MatchString(token_line, results, grammar);
 			if (matched)
 			{
 				std::cout << token_line << " matched to\n";
@@ -42,4 +33,20 @@ void Lexer::ParseTokenFile(const std::string& filename, BNF& grammar)
 		}
 		token_file.close();
 	}
+}
+bool Lexer::MatchString(const std::string& match_string, std::vector<BNFMatchResult>& results, class BNF& grammar)
+{
+	// split by spaces
+	std::regex regex_split_spaces("\\s");
+	std::vector<std::string> tokens
+	(
+		std::sregex_token_iterator(match_string.begin(), match_string.end(), regex_split_spaces, -1),
+		std::sregex_token_iterator()
+	);
+	return MatchTokens(tokens, results, grammar);
+}
+
+bool Lexer::MatchTokens(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& results, class BNF& grammar)
+{
+	return grammar.Match(tokens, results);
 }

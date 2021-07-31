@@ -8,7 +8,7 @@ class BNFTree
 public:
 	void AddNode(const BNFNode& node);
 	void Populate();
-	bool Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
+	bool Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
 
 private:
 	std::vector<BNFNode> m_nodes;

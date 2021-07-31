@@ -96,7 +96,7 @@ bool BNF::ParseStream(std::istream& stream)
 	return true;
 }
 
-bool BNF::Match(std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
+bool BNF::Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
 {
 	return m_tree.Match(tokens, out_result);
 }
