@@ -7,7 +7,7 @@
 int main()
 {
     BNF grammar;
-    const bool parsed_grammar = grammar.Parse("data/test/grammar.bnf");
+    const bool parsed_grammar = grammar.ParseFile("data/test/grammar.bnf");
     if (!parsed_grammar)
     {
         std::cout << "FAILED!" << std::endl;

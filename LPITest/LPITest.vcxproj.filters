@@ -11,6 +11,9 @@
     <ClCompile Include="BNF\TestBNFNode.cpp">
       <Filter>BNF</Filter>
     </ClCompile>
+    <ClCompile Include="Lexer\TestLexer.cpp">
+      <Filter>Lexer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -19,5 +22,11 @@
     <Filter Include="BNF">
       <UniqueIdentifier>{08953cd8-cacd-48ab-9c4c-fa16f27cd524}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lexer">
+      <UniqueIdentifier>{1ff1f4d6-d8bc-4e9b-8710-611ac8a42f70}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
