@@ -96,4 +96,37 @@ TEST(TestLexer, TestIntermediateTokenMatch)
 		EXPECT_TRUE(result[0].m_symbol == "<unary_verb>");
 		EXPECT_TRUE(result[0].m_expression_term.value == "LOOK");
 	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("PICKUP KEY", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 2);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "PICKUP");
+		EXPECT_TRUE(result[1].m_symbol == "<noun>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "KEY");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("WALK SOUTH", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 2);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "WALK");
+		EXPECT_TRUE(result[1].m_symbol == "<noun>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "SOUTH");
+	}
+
+	{
+		std::vector<BNFMatchResult> result;
+		const bool match = lexer.MatchString("GIVE FROG", result, grammar);
+		EXPECT_TRUE(match);
+		ASSERT_TRUE(result.size() == 2);
+		EXPECT_TRUE(result[0].m_symbol == "<verb>");
+		EXPECT_TRUE(result[0].m_expression_term.value == "GIVE");
+		EXPECT_TRUE(result[1].m_symbol == "<noun>");
+		EXPECT_TRUE(result[1].m_expression_term.value == "FROG");
+	}
 }
