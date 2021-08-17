@@ -73,7 +73,7 @@ bool BNFNode::Match(const std::vector<std::string>& tokens, std::vector<BNFMatch
 	{
 		// try to match terms one by one
 		bool all_matched = true;
-		for (int i = 0; i < tokens.size() && all_matched; ++i)
+		for (unsigned int i = 0; i < tokens.size() && all_matched; ++i)
 		{
 			std::vector<std::string> token;
 			token.push_back(tokens[i]);
