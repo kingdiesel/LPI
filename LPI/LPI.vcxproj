@@ -162,8 +162,8 @@
     <ClInclude Include="Lexer\Lexer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\grammar.bnf" />
     <None Include="data\test\command.in" />
+    <None Include="data\test\grammar.bnf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

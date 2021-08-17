@@ -75,7 +75,7 @@
     <None Include="data\test\command.in">
       <Filter>data\test</Filter>
     </None>
-    <None Include="data\grammar.bnf">
+    <None Include="data\test\grammar.bnf">
       <Filter>data\test</Filter>
     </None>
   </ItemGroup>
