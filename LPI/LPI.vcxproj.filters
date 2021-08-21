@@ -23,9 +23,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LPI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BNF\BNFExpression.cpp">
       <Filter>Source Files\BNF</Filter>
     </ClCompile>
