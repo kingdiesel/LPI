@@ -6,6 +6,8 @@
 #include <regex>
 #include <algorithm>
 
+BNFTree m_tree;
+
 bool BNF::ParseString(const std::string& bnf_string)
 {
 	std::stringstream string_stream;

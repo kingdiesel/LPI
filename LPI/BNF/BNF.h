@@ -1,5 +1,4 @@
 #pragma once
-#include "BNFTree.h"
 #include "BNFMatchResult.h"
 #include <string>
 #include <vector>
@@ -12,5 +11,4 @@ public:
 	bool Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
 private:
 	bool ParseStream(std::istream& stream);
-	BNFTree m_tree;
 };

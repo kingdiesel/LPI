@@ -17,20 +17,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\BuildAndTest.yml = .github\workflows\BuildAndTest.yml
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPISample", "LPISample\LPISample.vcxproj", "{19FB4F2B-0655-4D77-9F2D-02D197623CF8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27} = {F4C28EBA-BB9D-47A6-8B6C-631779C95C27}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Debug|x64.ActiveCfg = Debug|x64
 		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Debug|x64.Build.0 = Debug|x64
+		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Debug|x86.ActiveCfg = Debug|Win32
+		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Debug|x86.Build.0 = Debug|Win32
 		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Release|x64.ActiveCfg = Release|x64
 		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Release|x64.Build.0 = Release|x64
+		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Release|x86.ActiveCfg = Release|Win32
+		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}.Release|x86.Build.0 = Release|Win32
 		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Debug|x64.ActiveCfg = Debug|x64
 		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Debug|x64.Build.0 = Debug|x64
+		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Debug|x86.ActiveCfg = Debug|Win32
+		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Debug|x86.Build.0 = Debug|Win32
 		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Release|x64.ActiveCfg = Release|x64
 		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Release|x64.Build.0 = Release|x64
+		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Release|x86.ActiveCfg = Release|Win32
+		{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}.Release|x86.Build.0 = Release|Win32
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Debug|x64.ActiveCfg = Debug|x64
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Debug|x64.Build.0 = Debug|x64
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Debug|x86.ActiveCfg = Debug|Win32
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Debug|x86.Build.0 = Debug|Win32
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x64.ActiveCfg = Release|x64
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x64.Build.0 = Release|x64
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x86.ActiveCfg = Release|Win32
+		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
