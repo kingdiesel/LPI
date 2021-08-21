@@ -5,8 +5,7 @@
 #include <fstream>
 #include <regex>
 #include <algorithm>
-
-BNFTree m_tree;
+#include <cassert>
 
 bool BNF::ParseString(const std::string& bnf_string)
 {
@@ -15,8 +14,23 @@ bool BNF::ParseString(const std::string& bnf_string)
 	return ParseStream(string_stream);
 }
 
+BNF::BNF()
+{
+	m_tree = new BNFTree();
+}
+
+BNF::~BNF()
+{
+	if (m_tree != nullptr)
+	{
+		delete m_tree;
+	}
+	m_tree = nullptr;
+}
+
 bool BNF::ParseFile(const std::string& filename)
 {
+	assert(m_tree != nullptr);
 	std::ifstream grammar_file;
 	grammar_file.open(filename);
 	if (grammar_file.is_open()) 
@@ -30,6 +44,7 @@ bool BNF::ParseFile(const std::string& filename)
 
 bool BNF::ParseStream(std::istream& stream)
 {
+	assert(m_tree != nullptr);
 	std::string grammar_line;
 	while (stream.good())
 	{
@@ -91,14 +106,15 @@ bool BNF::ParseStream(std::istream& stream)
 
 			// TODO: emplace
 			BNFNode node(symbol, subdivided_expressions);
-			m_tree.AddNode(node);
+			m_tree->AddNode(node);
 		}
 	}
-	m_tree.Populate();
+	m_tree->Populate();
 	return true;
 }
 
 bool BNF::Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
 {
-	return m_tree.Match(tokens, out_result);
+	assert(m_tree != nullptr);
+	return m_tree->Match(tokens, out_result);
 }
