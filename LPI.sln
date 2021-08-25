@@ -22,6 +22,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPISample", "LPISample\LPIS
 		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27} = {F4C28EBA-BB9D-47A6-8B6C-631779C95C27}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPIScene", "LPIScene\LPIScene.vcxproj", "{964D5F2F-BFE7-4B59-B175-17ECC0F37530}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -54,6 +56,14 @@ Global
 		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x64.Build.0 = Release|x64
 		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x86.ActiveCfg = Release|Win32
 		{19FB4F2B-0655-4D77-9F2D-02D197623CF8}.Release|x86.Build.0 = Release|Win32
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Debug|x64.ActiveCfg = Debug|x64
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Debug|x64.Build.0 = Debug|x64
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Debug|x86.ActiveCfg = Debug|Win32
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Debug|x86.Build.0 = Debug|Win32
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Release|x64.ActiveCfg = Release|x64
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Release|x64.Build.0 = Release|x64
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Release|x86.ActiveCfg = Release|Win32
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
