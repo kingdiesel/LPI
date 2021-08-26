@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actions\BaseAction.cpp" />
     <ClCompile Include="LPIScene.cpp" />
-    <ClCompile Include="Scene\SceneObject.cpp" />
+    <ClCompile Include="Objects\SceneObject.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Scene\SceneObject.h" />
+    <ClInclude Include="Actions\BaseAction.h" />
+    <ClInclude Include="Objects\SceneObject.h" />
+    <ClInclude Include="Scene\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
