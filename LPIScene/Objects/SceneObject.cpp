@@ -35,6 +35,16 @@ bool SceneObject::MatchesAdjectiveNoun(const std::string& adjective, const std::
 	return MatchesAdjective(adjective) && MatchesNoun(noun);
 }
 
+void SceneObject::AddNoun(const std::string& noun)
+{
+	m_nouns.push_back(noun);
+}
+
+void SceneObject::AddAdjective(const std::string& adjective)
+{
+	m_adjectives.push_back(adjective);
+}
+
 const std::string& SceneObject::GetDescription() const
 {
 	return m_description;

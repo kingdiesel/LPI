@@ -14,6 +14,12 @@
     <Filter Include="Actions">
       <UniqueIdentifier>{4673c5e7-1336-4ed5-86aa-74f5dc6dcfe9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{86bfafb1-7f18-4159-992e-db271bbb2fdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\test">
+      <UniqueIdentifier>{52f4822d-ad7f-480d-b56a-a9e640be7b4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LPIScene.cpp">
@@ -28,6 +34,9 @@
     <ClCompile Include="Actions\BaseAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\LookAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -39,5 +48,16 @@
     <ClInclude Include="Actions\BaseAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\LookAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\test\command.in">
+      <Filter>data\test</Filter>
+    </None>
+    <None Include="data\test\grammar.bnf">
+      <Filter>data\test</Filter>
+    </None>
   </ItemGroup>
 </Project>

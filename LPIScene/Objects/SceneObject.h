@@ -19,6 +19,9 @@ public:
 	bool MatchesNoun(const std::string& noun);
 	bool MatchesAdjective(const std::string& adjective);
 	bool MatchesAdjectiveNoun(const std::string& adjective, const std::string& noun);
+
+	void AddNoun(const std::string& noun);
+	void AddAdjective(const std::string& adjective);
 private:
 	std::string m_id;
 	std::string m_description;

@@ -2,10 +2,20 @@
 //
 
 #include <iostream>
+#include "Scene/Scene.h"
+#include "Objects/SceneObject.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	SceneObject* some_object = new SceneObject();
+	some_object->SetID("1");
+	some_object->SetDescription("A regular looking llama.");
+	some_object->AddNoun("LLAMA");
+
+	Scene main_scene;
+	main_scene.AddSceneObject(some_object);
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

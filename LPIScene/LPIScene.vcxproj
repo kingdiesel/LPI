@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\LPIScene</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\LPIScene</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,14 +142,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\BaseAction.cpp" />
+    <ClCompile Include="Actions\LookAction.cpp" />
     <ClCompile Include="LPIScene.cpp" />
     <ClCompile Include="Objects\SceneObject.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\BaseAction.h" />
+    <ClInclude Include="Actions\LookAction.h" />
     <ClInclude Include="Objects\SceneObject.h" />
     <ClInclude Include="Scene\Scene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\test\command.in" />
+    <None Include="data\test\grammar.bnf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
