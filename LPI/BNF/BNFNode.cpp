@@ -73,6 +73,7 @@ bool BNFNode::Match(const std::vector<std::string>& tokens, std::vector<BNFMatch
 	{
 		// try to match terms one by one
 		bool all_matched = true;
+		std::vector<BNFMatchResult> cached_results = out_result;
 		for (unsigned int i = 0; i < tokens.size() && all_matched; ++i)
 		{
 			std::vector<std::string> token;
@@ -83,6 +84,10 @@ bool BNFNode::Match(const std::vector<std::string>& tokens, std::vector<BNFMatch
 		if (all_matched)
 		{
 			return true;
+		}
+		else
+		{
+			out_result = cached_results;
 		}
 	}
 	return false;
