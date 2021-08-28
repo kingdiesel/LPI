@@ -4,7 +4,7 @@
 
 LookAction::LookAction()
 {
-
+	AddVerb("LOOK");
 }
 
 void LookAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& results)
@@ -16,9 +16,13 @@ void LookAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& resu
 		return;
 	}
 
-	SceneObject* object = payload[0];
-	assert(object != nullptr);
+	return Execute(payload[0], results);
+	
+}
 
+void LookAction::Execute(SceneObject* payload, ExecuteResults& results)
+{
+	assert(payload != nullptr);
 	results.m_success = true;
-	results.m_result_string = object->GetDescription();
+	results.m_result_string = payload->GetDescription();
 }

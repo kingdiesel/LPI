@@ -20,6 +20,9 @@
     <Filter Include="data\test">
       <UniqueIdentifier>{52f4822d-ad7f-480d-b56a-a9e640be7b4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{edf24b13-7a4f-4dfb-ba4d-a510fc1d459f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LPIScene.cpp">
@@ -37,6 +40,9 @@
     <ClCompile Include="Actions\LookAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Util\LPIUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -51,11 +57,11 @@
     <ClInclude Include="Actions\LookAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="Util\LPIUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\test\command.in">
-      <Filter>data\test</Filter>
-    </None>
     <None Include="data\test\grammar.bnf">
       <Filter>data\test</Filter>
     </None>

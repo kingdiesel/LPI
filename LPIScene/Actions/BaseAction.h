@@ -15,9 +15,10 @@ class BaseAction
 public:
 	BaseAction() = default;
 	void AddVerb(const std::string& verb);
-	bool MatchesVerb(const std::string& verb);
+	bool MatchesVerb(const std::string& verb) const;
 
 	virtual void Execute(std::vector<SceneObject*> payload, ExecuteResults& results) = 0;
+	virtual void Execute(SceneObject* payload, ExecuteResults& results) = 0;
 private:
 	std::vector<std::string> m_verbs;
 };

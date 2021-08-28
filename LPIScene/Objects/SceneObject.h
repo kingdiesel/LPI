@@ -16,9 +16,9 @@ public:
 	bool operator==(const std::string& rhs) const;
 	bool operator==(const SceneObject& rhs) const;
 
-	bool MatchesNoun(const std::string& noun);
-	bool MatchesAdjective(const std::string& adjective);
-	bool MatchesAdjectiveNoun(const std::string& adjective, const std::string& noun);
+	bool MatchesNoun(const std::string& noun) const;
+	bool MatchesAdjective(const std::string& adjective) const;
+	bool MatchesAdjectiveNoun(const std::string& adjective, const std::string& noun) const;
 
 	void AddNoun(const std::string& noun);
 	void AddAdjective(const std::string& adjective);

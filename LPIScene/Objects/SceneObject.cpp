@@ -20,17 +20,17 @@ bool SceneObject::operator==(const SceneObject& rhs) const
 	return m_id == rhs.m_id;
 }
 
-bool SceneObject::MatchesNoun(const std::string& noun)
+bool SceneObject::MatchesNoun(const std::string& noun) const
 {
-	return std::find(m_nouns.begin(), m_nouns.end(), noun) == m_nouns.end();
+	return std::find(m_nouns.begin(), m_nouns.end(), noun) != m_nouns.end();
 }
 
-bool SceneObject::MatchesAdjective(const std::string& adjective)
+bool SceneObject::MatchesAdjective(const std::string& adjective) const
 {
-	return std::find(m_adjectives.begin(), m_adjectives.end(), adjective) == m_adjectives.end();
+	return std::find(m_adjectives.begin(), m_adjectives.end(), adjective) != m_adjectives.end();
 }
 
-bool SceneObject::MatchesAdjectiveNoun(const std::string& adjective, const std::string& noun)
+bool SceneObject::MatchesAdjectiveNoun(const std::string& adjective, const std::string& noun) const
 {
 	return MatchesAdjective(adjective) && MatchesNoun(noun);
 }

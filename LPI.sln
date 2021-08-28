@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPI", "LPI\LPI.vcxproj", "{F4C28EBA-BB9D-47A6-8B6C-631779C95C27}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPITest", "LPITest\LPITest.vcxproj", "{CB387F5C-E010-486A-9AA3-2FC8B609C0BC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{964D5F2F-BFE7-4B59-B175-17ECC0F37530} = {964D5F2F-BFE7-4B59-B175-17ECC0F37530}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{5D694D85-5C1C-475E-90BB-0A5A63C5E975}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,6 +26,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPISample", "LPISample\LPIS
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LPIScene", "LPIScene\LPIScene.vcxproj", "{964D5F2F-BFE7-4B59-B175-17ECC0F37530}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4C28EBA-BB9D-47A6-8B6C-631779C95C27} = {F4C28EBA-BB9D-47A6-8B6C-631779C95C27}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
