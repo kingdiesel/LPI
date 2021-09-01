@@ -14,6 +14,15 @@
     <ClCompile Include="Lexer\TestLexer.cpp">
       <Filter>Lexer</Filter>
     </ClCompile>
+    <ClCompile Include="Objects\TestObjects.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\TestActions.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\TestScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -24,6 +33,15 @@
     </Filter>
     <Filter Include="Lexer">
       <UniqueIdentifier>{1ff1f4d6-d8bc-4e9b-8710-611ac8a42f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{4419f88e-9439-4e35-96fd-eb06e16eaaa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actions">
+      <UniqueIdentifier>{c7b46d5a-7fd1-4316-b78d-e8af63d10d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{a17ad393-980d-4f2e-9886-dc6083116097}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
