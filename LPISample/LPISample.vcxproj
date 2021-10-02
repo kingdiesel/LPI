@@ -145,11 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="LPISample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\test\command.in" />
     <None Include="data\test\grammar.bnf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game\Game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

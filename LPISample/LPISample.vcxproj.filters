@@ -19,10 +19,16 @@
     <Filter Include="data\test">
       <UniqueIdentifier>{f1ab4e24-80e5-435b-b668-332234599686}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{d6099808-349e-47f0-8a8b-7d046e3fbcd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LPISample.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,5 +38,10 @@
     <None Include="data\test\grammar.bnf">
       <Filter>data\test</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

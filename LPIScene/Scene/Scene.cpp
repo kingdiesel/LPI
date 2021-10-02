@@ -22,3 +22,13 @@ SceneObject* Scene::FindByNoun(const std::string& noun)
 
 	return nullptr;
 }
+
+void Scene::SetSceneDescription(const std::string& description)
+{
+	m_scene_description = description;
+}
+
+std::string Scene::GetSceneDescription() const
+{
+	return m_scene_description;
+}
