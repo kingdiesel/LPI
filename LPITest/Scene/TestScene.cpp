@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <gtest/gtest.h>
 #include "Scene/Scene.cpp"
+#include "Scene/SceneManager.cpp"
 
 TEST(TestScene, TestScene)
 {
@@ -13,4 +14,15 @@ TEST(TestScene, TestScene)
 	scene.AddSceneObject(&scene_object);
 
 	EXPECT_TRUE(scene.FindByNoun("FROG") != nullptr);
+}
+
+TEST(TestScene, TestSceneManager)
+{
+	Scene scene;
+	EXPECT_TRUE(SceneManager::GetInstance() != nullptr);
+	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == nullptr);
+	
+	SceneManager::GetInstance()->SetCurrentScene(&scene);
+
+	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &scene);
 }

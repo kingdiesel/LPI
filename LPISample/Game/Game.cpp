@@ -4,16 +4,20 @@
 #include "Objects/SceneObject.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
+#include "Scene/SceneManager.h"
 
 void Game::Init()
 {
+	// initialize scene manager with first scene
+	SceneManager::GetInstance()->SetCurrentScene(&m_main_scene);
+
 	// setup available actions
 	m_actions.push_back(new LookAction());
 	
 	// setup scene objects
 	SceneObject* some_object = new SceneObject();
 	some_object->SetID("1");
-	some_object->SetDescription("A regular looking llama.");
+	some_object->SetDescription("A regular looking llama.\n");
 	some_object->AddNoun("LLAMA");
 
 	// setup scene
@@ -35,11 +39,6 @@ const std::vector<class BaseAction*>& Game::GetActions() const
 	return m_actions;
 }
 
-const Scene& Game::GetScene() const
-{
-	return m_main_scene;
-}
-
 void Game::ProcessCommand(const std::string& command)
 {
 	Lexer lexer;
@@ -59,7 +58,7 @@ void Game::ProcessCommand(const std::string& command)
 		}
 	}
 
-	if (verb.length() != 0 && noun.length() != 0)
+	if (verb.length() != 0)
 	{
 		auto found_action = std::find_if(m_actions.begin(), m_actions.end(),
 			[&verb](const BaseAction* action)
@@ -70,7 +69,7 @@ void Game::ProcessCommand(const std::string& command)
 
 		SceneObject* found_object = m_main_scene.FindByNoun(noun);
 
-		if (found_action != m_actions.end() && found_object != nullptr)
+		if (found_action != m_actions.end())
 		{
 			ExecuteResults execute_results;
 			(*found_action)->Execute(found_object, execute_results);

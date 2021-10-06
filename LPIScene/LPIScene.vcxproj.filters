@@ -36,6 +36,9 @@
     <ClCompile Include="Util\LPIUtil.cpp">
       <Filter>Util</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -52,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="Util\LPIUtil.h">
       <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

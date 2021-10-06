@@ -8,7 +8,6 @@ class Game
 public:
 	void Init();
 	const std::vector<class BaseAction*>& GetActions() const;
-	const Scene& GetScene() const;
 	void ProcessCommand(const std::string& command);
 private:
 	std::vector<class BaseAction*> m_actions;

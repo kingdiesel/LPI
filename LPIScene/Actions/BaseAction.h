@@ -17,6 +17,8 @@ public:
 	void AddVerb(const std::string& verb);
 	bool MatchesVerb(const std::string& verb) const;
 
+	virtual bool IsValidPayload(SceneObject* payload) = 0;
+	virtual bool IsValidPayload(std::vector<SceneObject*> payload) = 0;
 	virtual void Execute(std::vector<SceneObject*> payload, ExecuteResults& results) = 0;
 	virtual void Execute(SceneObject* payload, ExecuteResults& results) = 0;
 private:

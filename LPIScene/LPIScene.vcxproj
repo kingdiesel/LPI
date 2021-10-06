@@ -153,6 +153,7 @@
     <ClCompile Include="Actions\LookAction.cpp" />
     <ClCompile Include="Objects\SceneObject.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Util\LPIUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="Actions\LookAction.h" />
     <ClInclude Include="Objects\SceneObject.h" />
     <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Util\LPIUtil.h" />
   </ItemGroup>
   <ItemGroup>

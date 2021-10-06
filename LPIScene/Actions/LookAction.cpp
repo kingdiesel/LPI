@@ -1,5 +1,7 @@
 #include "LookAction.h"
 #include "Objects/SceneObject.h"
+#include "Scene/SceneManager.h"
+#include "Scene/Scene.h"
 #include <cassert>
 
 LookAction::LookAction()
@@ -10,19 +12,33 @@ LookAction::LookAction()
 void LookAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& results)
 {
 	results.m_success = false;
-	// look action only takes one objects
-	if (payload.size() != 1)
+	if (payload.size() == 1)
 	{
-		return;
+		return Execute(payload[0], results);
 	}
-
-	return Execute(payload[0], results);
 	
+	return Execute(nullptr, results);
 }
 
 void LookAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
-	assert(payload != nullptr);
 	results.m_success = true;
-	results.m_result_string = payload->GetDescription();
+	if (payload != nullptr)
+	{
+		results.m_result_string = payload->GetDescription();
+	}
+	else
+	{
+		results.m_result_string = SceneManager::GetInstance()->GetCurrentScene()->GetSceneDescription();
+	}
+}
+
+bool LookAction::IsValidPayload(SceneObject* payload)
+{
+	return true;
+}
+
+bool LookAction::IsValidPayload(std::vector<SceneObject*> payload)
+{
+	return payload.size() == 1 || payload.size() == 0;
 }

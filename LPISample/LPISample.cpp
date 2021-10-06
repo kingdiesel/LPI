@@ -4,12 +4,13 @@
 #include <iostream>
 #include <algorithm>
 #include "Game/Game.h"
+#include "Scene/SceneManager.h"
 int main()
 {
 	Game game;
 	game.Init();
 
-	std::cout << game.GetScene().GetSceneDescription() << std::endl << std::endl;
+	std::cout << SceneManager::GetInstance()->GetCurrentScene()->GetSceneDescription() << std::endl << std::endl;
 	
 	while (1)
 	{
