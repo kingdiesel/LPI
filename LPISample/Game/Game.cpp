@@ -72,11 +72,14 @@ void Game::ProcessCommand(const std::string& command)
 		if (found_action != m_actions.end())
 		{
 			ExecuteResults execute_results;
-			(*found_action)->Execute(found_object, execute_results);
-
-			if (execute_results.m_success)
+			if ((*found_action)->IsValidPayload(found_object))
 			{
-				std::cout << execute_results.m_result_string << std::endl;
+				(*found_action)->Execute(found_object, execute_results);
+
+				if (execute_results.m_success)
+				{
+					std::cout << execute_results.m_result_string << std::endl;
+				}
 			}
 		}
 	}
