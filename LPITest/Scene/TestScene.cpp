@@ -26,3 +26,10 @@ TEST(TestScene, TestSceneManager)
 
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &scene);
 }
+
+TEST(TestScene, TestSceneExit)
+{
+	Scene scene;
+	
+	Scene other_scene;
+}

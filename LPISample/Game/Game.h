@@ -12,5 +12,6 @@ public:
 private:
 	std::vector<class BaseAction*> m_actions;
 	Scene m_main_scene;
+	Scene m_north_scene;
 	BNF m_grammar;
 };

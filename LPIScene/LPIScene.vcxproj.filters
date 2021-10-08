@@ -39,6 +39,12 @@
     <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\WalkAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\SceneExitObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -58,6 +64,12 @@
     </ClInclude>
     <ClInclude Include="Scene\SceneManager.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\WalkAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\SceneExitObject.h">
+      <Filter>Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

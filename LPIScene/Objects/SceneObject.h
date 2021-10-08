@@ -22,6 +22,8 @@ public:
 
 	void AddNoun(const std::string& noun);
 	void AddAdjective(const std::string& adjective);
+
+	virtual std::string GetDebugName() const;
 private:
 	std::string m_id;
 	std::string m_description;

@@ -1,7 +1,9 @@
 #include "Game.h"
 #include <iostream>
 #include "Actions/LookAction.h"
+#include "Actions/WalkAction.h"
 #include "Objects/SceneObject.h"
+#include "Objects/SceneExitObject.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
@@ -13,6 +15,7 @@ void Game::Init()
 
 	// setup available actions
 	m_actions.push_back(new LookAction());
+	m_actions.push_back(new WalkAction());
 	
 	// setup scene objects
 	SceneObject* some_object = new SceneObject();
@@ -20,12 +23,29 @@ void Game::Init()
 	some_object->SetDescription("A regular looking llama.\n");
 	some_object->AddNoun("LLAMA");
 
+	SceneObject* main_scene_north_exit = new SceneExitObject(&m_north_scene);
+	main_scene_north_exit->SetID("2");
+	main_scene_north_exit->SetDescription("To the north the grass has a white tint.\n");
+	main_scene_north_exit->AddNoun("NORTH");
+
+	SceneObject* north_scene_south_exit = new SceneExitObject(&m_main_scene);
+	north_scene_south_exit->SetID("3");
+	north_scene_south_exit->SetDescription("You see a llama and greener pastures to the south.\n");
+	north_scene_south_exit->AddNoun("SOUTH");
+
 	// setup scene
+	m_main_scene.AddSceneObject(main_scene_north_exit);
 	m_main_scene.AddSceneObject(some_object);
 	m_main_scene.SetSceneDescription(
 		"You stand in a grass field that stretches to the horizon in every direction.\n"
-		"A llama is nearby.\n"
+		"A llama is nearby. There is an exit to the north.\n"
 	);
+
+	m_north_scene.AddSceneObject(north_scene_south_exit);
+	m_north_scene.SetSceneDescription(
+		"Lots of snow here. You see a llama and greener pastures to the south.\n"
+	);
+
 	// parse grammar 
 	const bool parsed_grammar = m_grammar.ParseFile("data/test/grammar.bnf");
 	if (!parsed_grammar)
@@ -67,7 +87,7 @@ void Game::ProcessCommand(const std::string& command)
 			}
 		);
 
-		SceneObject* found_object = m_main_scene.FindByNoun(noun);
+		SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
 
 		if (found_action != m_actions.end())
 		{

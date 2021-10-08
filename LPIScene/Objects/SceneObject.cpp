@@ -45,6 +45,11 @@ void SceneObject::AddAdjective(const std::string& adjective)
 	m_adjectives.push_back(adjective);
 }
 
+std::string SceneObject::GetDebugName() const
+{
+	return "SceneObject";
+}
+
 const std::string& SceneObject::GetDescription() const
 {
 	return m_description;
