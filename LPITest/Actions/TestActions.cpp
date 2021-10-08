@@ -2,6 +2,8 @@
 #include <gtest/gtest.h>
 #include "Actions/BaseAction.cpp"
 #include "Actions/LookAction.cpp"
+#include "Actions/WalkAction.cpp"
+#include "Objects/SceneExitObject.cpp"
 
 TEST(TestActions, TestBaseAction)
 {
@@ -27,4 +29,25 @@ TEST(TestActions, TestLookAction)
 	look_action.Execute(&scene_object, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(results.m_result_string == "a thing");
+}
+
+TEST(TestActions, TestWalkAction)
+{
+	Scene one_scene, two_scene;
+	SceneExitObject one_to_two(&two_scene);
+	SceneExitObject two_to_one(&one_scene);
+	one_scene.AddSceneObject(&one_to_two);
+	two_scene.AddSceneObject(&two_to_one);
+	SceneManager::GetInstance()->SetCurrentScene(&one_scene);
+	
+	WalkAction walk_action;
+	ExecuteResults results;
+
+	walk_action.Execute(&one_to_two, results);
+	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &two_scene);
+	
+	walk_action.Execute(&two_to_one, results);
+	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &one_scene);
+
+	SceneManager::GetInstance()->SetCurrentScene(nullptr);
 }

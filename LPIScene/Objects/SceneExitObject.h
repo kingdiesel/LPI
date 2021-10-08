@@ -12,5 +12,5 @@ public:
 
 	virtual std::string GetDebugName() const override;
 private:
-	Scene* m_scene_exit;
+	Scene* m_scene_exit = nullptr;
 };
