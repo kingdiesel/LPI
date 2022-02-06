@@ -9,6 +9,7 @@ PickupAction::PickupAction()
 {
 	AddVerb("TAKE");
 	AddVerb("GET");
+	AddVerb("PICKUP");
 	// TODO: support "pick up"
 }
 
