@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <functional>
 
 class SceneObject;
 /*
@@ -11,6 +12,10 @@ class Scene
 {
 public:
 	Scene() = default;
+
+	// globally unique identifier for this scene
+	const std::string& GetID() const;
+	void SetID(const std::string& id);
 
 	// add an object to the scene
 	void AddSceneObject(SceneObject* scene_object);
@@ -30,4 +35,7 @@ private:
 
 	// the scene description
 	std::string m_scene_description;
+
+	// globally unique identifier for this scene
+	std::string m_id;
 };

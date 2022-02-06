@@ -21,11 +21,17 @@ void PickupAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& re
 void PickupAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
 	assert(payload != nullptr);
-	if (Scene* parent_scene = payload->GetParentScene())
+	Scene* parent_scene = payload->GetParentScene();
+	if (parent_scene != nullptr)
 	{
 		parent_scene->RemoveSceneObject(payload->GetID());
 	}
 	SceneManager::GetInstance()->GetCharacterScene()->AddSceneObject(payload);
+	SceneManager::GetInstance()->m_scene_change_cb.operator()(
+		payload,
+		parent_scene,
+		SceneManager::GetInstance()->GetCharacterScene()
+	);
 	results.m_success = true;
 	results.m_result_string += "You picked up ";
 	results.m_result_string += payload->GetShortName();

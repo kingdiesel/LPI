@@ -10,6 +10,7 @@ public:
 	const std::vector<class BaseAction*>& GetActions() const;
 	void ProcessCommand(const std::string& command);
 private:
+	void SceneChangeCallback(SceneObject* payload, Scene* source, Scene* destination);
 	std::vector<class BaseAction*> m_actions;
 	Scene m_main_scene;
 	Scene m_north_scene;

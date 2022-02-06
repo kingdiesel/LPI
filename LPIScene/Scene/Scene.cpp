@@ -2,6 +2,16 @@
 #include "Objects/SceneObject.h"
 #include <cassert>
 
+const std::string& Scene::GetID() const
+{
+	return m_id;
+}
+
+void Scene::SetID(const std::string& id)
+{
+	m_id = id;
+}
+
 void Scene::AddSceneObject(SceneObject* scene_object)
 {
 	assert(scene_object != nullptr);

@@ -3,6 +3,11 @@
 std::shared_ptr<SceneManager> SceneManager::m_scene_manager(nullptr);
 std::once_flag SceneManager::m_scene_manager_once_flag;
 
+SceneManager::SceneManager()
+{
+	m_character_scene.SetID("INVENTORY_SCENE");
+}
+
 std::shared_ptr<SceneManager> SceneManager::GetInstance(void)
 {
 	std::call_once(m_scene_manager_once_flag, []() { m_scene_manager.reset(new SceneManager); });

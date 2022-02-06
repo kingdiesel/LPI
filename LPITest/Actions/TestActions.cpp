@@ -53,6 +53,12 @@ TEST(TestActions, TestWalkAction)
 	SceneManager::GetInstance()->SetCurrentScene(nullptr);
 }
 
+void SceneChangeTest(SceneObject* payload, Scene* source, Scene* destination)
+{
+	EXPECT_TRUE(payload->GetID() == "one");
+	EXPECT_TRUE(source->GetID() == "TestPickupActionScene");
+	EXPECT_TRUE(destination->GetID() == "INVENTORY_SCENE");
+}
 TEST(TestActions, TestPickupAction)
 {
 	SceneObject scene_object;
@@ -63,6 +69,9 @@ TEST(TestActions, TestPickupAction)
 
 	Scene scene;
 	scene.AddSceneObject(&scene_object);
+	scene.SetID("TestPickupActionScene");
+
+	SceneManager::GetInstance()->m_scene_change_cb = SceneChangeTest;
 
 	PickupAction pickup_action;
 	ExecuteResults results;
@@ -71,4 +80,6 @@ TEST(TestActions, TestPickupAction)
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCharacterScene()->FindByNoun("thing") == &scene_object);
 	EXPECT_TRUE(scene_object.GetParentScene() == SceneManager::GetInstance()->GetCharacterScene());
 	EXPECT_TRUE(scene.FindByNoun("thing") == nullptr);
+
+	SceneManager::GetInstance()->m_scene_change_cb = nullptr;
 }

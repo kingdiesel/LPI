@@ -52,6 +52,14 @@ void Game::Init()
 	{
 		std::cout << "FAILED!" << std::endl;
 	}
+
+	SceneManager::GetInstance()->m_scene_change_cb = std::bind(
+		&Game::SceneChangeCallback,
+		this,
+		std::placeholders::_1,
+		std::placeholders::_2,
+		std::placeholders::_3
+	);
 }
 
 const std::vector<class BaseAction*>& Game::GetActions() const
@@ -103,4 +111,9 @@ void Game::ProcessCommand(const std::string& command)
 			}
 		}
 	}
+}
+
+void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* destination)
+{
+	std::cout << "what" << std::endl;
 }

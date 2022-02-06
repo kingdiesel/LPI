@@ -12,6 +12,8 @@
 class SceneManager
 {
 public:
+	SceneManager();
+
 	// get the scene manager singleton
 	static std::shared_ptr<SceneManager> GetInstance(void);
 	
@@ -21,6 +23,8 @@ public:
 
 	// get the character scene
 	Scene* GetCharacterScene();
+
+	std::function<void(SceneObject*, Scene*, Scene*)> m_scene_change_cb;
 
 private:
 	// internal singleton variables
