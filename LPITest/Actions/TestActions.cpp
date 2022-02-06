@@ -3,6 +3,7 @@
 #include "Actions/BaseAction.cpp"
 #include "Actions/LookAction.cpp"
 #include "Actions/WalkAction.cpp"
+#include "Actions/PickupAction.cpp"
 #include "Objects/SceneExitObject.cpp"
 
 TEST(TestActions, TestBaseAction)
@@ -50,4 +51,24 @@ TEST(TestActions, TestWalkAction)
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &one_scene);
 
 	SceneManager::GetInstance()->SetCurrentScene(nullptr);
+}
+
+TEST(TestActions, TestPickupAction)
+{
+	SceneObject scene_object;
+	scene_object.SetDescription("a thing of the past");
+	scene_object.SetShortName("a thing");
+	scene_object.SetID("one");
+	scene_object.AddNoun("thing");
+
+	Scene scene;
+	scene.AddSceneObject(&scene_object);
+
+	PickupAction pickup_action;
+	ExecuteResults results;
+	pickup_action.Execute(&scene_object, results);
+	EXPECT_TRUE(results.m_success);
+	EXPECT_TRUE(SceneManager::GetInstance()->GetCharacterScene()->FindByNoun("thing") == &scene_object);
+	EXPECT_TRUE(scene_object.GetParentScene() == SceneManager::GetInstance()->GetCharacterScene());
+	EXPECT_TRUE(scene.FindByNoun("thing") == nullptr);
 }

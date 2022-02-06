@@ -18,3 +18,8 @@ Scene* SceneManager::GetCurrentScene() const
 {
 	return m_current_scene;
 }
+
+Scene* SceneManager::GetCharacterScene()
+{
+	return &m_character_scene;
+}

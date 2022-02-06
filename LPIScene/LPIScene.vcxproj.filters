@@ -45,6 +45,12 @@
     <ClCompile Include="Objects\SceneExitObject.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Objects\SceneInventoryObject.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickupAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -70,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="Objects\SceneExitObject.h">
       <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\SceneInventoryObject.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickupAction.h">
+      <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

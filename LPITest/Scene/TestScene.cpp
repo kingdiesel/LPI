@@ -14,6 +14,15 @@ TEST(TestScene, TestScene)
 	scene.AddSceneObject(&scene_object);
 
 	EXPECT_TRUE(scene.FindByNoun("FROG") != nullptr);
+	EXPECT_TRUE(scene.FindByID("one") != nullptr);
+	EXPECT_TRUE(scene_object.GetParentScene() == &scene);
+	
+	SceneObject* removed_object = scene.RemoveSceneObject("one");
+	EXPECT_TRUE(scene_object.GetParentScene() == nullptr);
+	EXPECT_TRUE(removed_object->GetID() == "one");
+
+	removed_object = scene.RemoveSceneObject("one");
+	EXPECT_TRUE(removed_object == nullptr);
 }
 
 TEST(TestScene, TestSceneManager)

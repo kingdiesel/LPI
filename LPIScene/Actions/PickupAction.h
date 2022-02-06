@@ -1,12 +1,12 @@
 #pragma once
 #include "BaseAction.h"
 /*
-	Walk action used to traverse between scenes
+	Pick up action used to put an item in the character inventory
 */
-class WalkAction : public BaseAction
+class PickupAction : public BaseAction
 {
 public:
-	WalkAction();
+	PickupAction();
 
 	virtual void Execute(std::vector<SceneObject*> payload, ExecuteResults& results) override;
 	virtual void Execute(SceneObject* payload, ExecuteResults& results) override;

@@ -151,8 +151,10 @@
   <ItemGroup>
     <ClCompile Include="Actions\BaseAction.cpp" />
     <ClCompile Include="Actions\LookAction.cpp" />
+    <ClCompile Include="Actions\PickupAction.cpp" />
     <ClCompile Include="Actions\WalkAction.cpp" />
     <ClCompile Include="Objects\SceneExitObject.cpp" />
+    <ClCompile Include="Objects\SceneInventoryObject.cpp" />
     <ClCompile Include="Objects\SceneObject.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
@@ -161,8 +163,10 @@
   <ItemGroup>
     <ClInclude Include="Actions\BaseAction.h" />
     <ClInclude Include="Actions\LookAction.h" />
+    <ClInclude Include="Actions\PickupAction.h" />
     <ClInclude Include="Actions\WalkAction.h" />
     <ClInclude Include="Objects\SceneExitObject.h" />
+    <ClInclude Include="Objects\SceneInventoryObject.h" />
     <ClInclude Include="Objects\SceneObject.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />

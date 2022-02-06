@@ -45,6 +45,16 @@ void SceneObject::AddAdjective(const std::string& adjective)
 	m_adjectives.push_back(adjective);
 }
 
+void SceneObject::SetParentScene(Scene* parent_scene)
+{
+	m_parent_scene = parent_scene;
+}
+
+Scene* SceneObject::GetParentScene() const
+{
+	return m_parent_scene;
+}
+
 std::string SceneObject::GetDebugName() const
 {
 	return "SceneObject";
@@ -58,4 +68,14 @@ const std::string& SceneObject::GetDescription() const
 void SceneObject::SetDescription(const std::string& description)
 {
 	m_description = description;
+}
+
+const std::string& SceneObject::GetShortName() const
+{
+	return m_short_name;
+}
+
+void SceneObject::SetShortName(const std::string & short_name)
+{
+	m_short_name = short_name;
 }
