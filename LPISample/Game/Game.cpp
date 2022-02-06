@@ -2,8 +2,10 @@
 #include <iostream>
 #include "Actions/LookAction.h"
 #include "Actions/WalkAction.h"
+#include "Actions/PickupAction.h"
 #include "Objects/SceneObject.h"
 #include "Objects/SceneExitObject.h"
+#include "Objects/SceneInventoryObject.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
@@ -16,6 +18,7 @@ void Game::Init()
 	// setup available actions
 	m_actions.push_back(new LookAction());
 	m_actions.push_back(new WalkAction());
+	m_actions.push_back(new PickupAction());
 	
 	// setup scene objects
 	SceneObject* some_object = new SceneObject();
@@ -33,12 +36,19 @@ void Game::Init()
 	north_scene_south_exit->SetDescription("You see a llama and greener pastures to the south.\n");
 	north_scene_south_exit->AddNoun("SOUTH");
 
+	SceneObject* key_object = new SceneInventoryObject();
+	key_object->SetID("4");
+	key_object->SetDescription("An old rusty key.\n");
+	key_object->SetShortName("a key");
+	key_object->AddNoun("KEY");
+
 	// setup scene
 	m_main_scene.AddSceneObject(main_scene_north_exit);
 	m_main_scene.AddSceneObject(some_object);
+	m_main_scene.AddSceneObject(key_object);
 	m_main_scene.SetSceneDescription(
 		"You stand in a grass field that stretches to the horizon in every direction.\n"
-		"A llama is nearby. There is an exit to the north.\n"
+		"A llama is nearby. A key lays on the ground. There is an exit to the north.\n"
 	);
 
 	m_north_scene.AddSceneObject(north_scene_south_exit);
@@ -115,5 +125,11 @@ void Game::ProcessCommand(const std::string& command)
 
 void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* destination)
 {
-	std::cout << "what" << std::endl;
+	if (payload->GetID() == "4" && destination->GetID() == "INVENTORY_SCENE")
+	{
+		m_main_scene.SetSceneDescription(
+			"You stand in a grass field that stretches to the horizon in every direction.\n"
+			"A llama is nearby. There is an exit to the north.\n"
+		);
+	}
 }
