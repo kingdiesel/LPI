@@ -35,7 +35,7 @@ void PickupAction::Execute(SceneObject* payload, ExecuteResults& results)
 	results.m_success = true;
 	results.m_result_string += "You picked up ";
 	results.m_result_string += payload->GetShortName();
-	results.m_result_string += ".";
+	results.m_result_string += ".\n";
 }
 
 bool PickupAction::IsValidPayload(SceneObject* payload)
