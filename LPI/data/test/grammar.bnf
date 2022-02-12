@@ -1,6 +1,6 @@
 ; basic adventure game grammar, <command> must always be present, it's the expected root
 <command> ::= <unary_verb> | <verb> <noun> | <verb> <adjective> <noun> | <verb> <adjective> <noun> <preposition> <adjective> <noun>
-<unary_verb> ::= LOOK | HELP
+<unary_verb> ::= LOOK | HELP | INVENTORY
 <verb> ::= PICKUP | INSERT | GIVE | WALK | ASK
 <adjective> ::= BLUE | RUSTY | THIRSTY | EMPTY | OLD
 <preposition> ::= INTO | TO | ABOUT

@@ -3,6 +3,7 @@
 #include "Actions/LookAction.h"
 #include "Actions/WalkAction.h"
 #include "Actions/PickupAction.h"
+#include "Actions/ListInventoryAction.h"
 #include "Objects/SceneObject.h"
 #include "Objects/SceneExitObject.h"
 #include "Objects/SceneInventoryObject.h"
@@ -19,6 +20,7 @@ void Game::Init()
 	m_actions.push_back(new LookAction());
 	m_actions.push_back(new WalkAction());
 	m_actions.push_back(new PickupAction());
+	m_actions.push_back(new ListInventoryAction());
 	
 	// setup scene objects
 	SceneObject* some_object = new SceneObject();

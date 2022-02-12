@@ -51,6 +51,9 @@
     <ClCompile Include="Actions\PickupAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\ListInventoryAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -81,6 +84,9 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="Actions\PickupAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ListInventoryAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -29,6 +29,9 @@ public:
 	void SetSceneDescription(const std::string& description);
 	std::string GetSceneDescription() const;
 
+	// full scene object list accessor
+	const std::vector<SceneObject*> GetSceneObjects() const;
+
 private:
 	// the scene objects in this scene
 	std::vector<SceneObject*> m_scene_objects;

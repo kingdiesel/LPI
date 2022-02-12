@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions\BaseAction.cpp" />
+    <ClCompile Include="Actions\ListInventoryAction.cpp" />
     <ClCompile Include="Actions\LookAction.cpp" />
     <ClCompile Include="Actions\PickupAction.cpp" />
     <ClCompile Include="Actions\WalkAction.cpp" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\BaseAction.h" />
+    <ClInclude Include="Actions\ListInventoryAction.h" />
     <ClInclude Include="Actions\LookAction.h" />
     <ClInclude Include="Actions\PickupAction.h" />
     <ClInclude Include="Actions\WalkAction.h" />

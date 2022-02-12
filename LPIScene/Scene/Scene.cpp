@@ -84,3 +84,8 @@ std::string Scene::GetSceneDescription() const
 {
 	return m_scene_description;
 }
+
+const std::vector<SceneObject*> Scene::GetSceneObjects() const
+{
+	return m_scene_objects;
+}

@@ -4,6 +4,7 @@
 #include "Actions/LookAction.cpp"
 #include "Actions/WalkAction.cpp"
 #include "Actions/PickupAction.cpp"
+#include "Actions/ListInventoryAction.cpp"
 #include "Objects/SceneExitObject.cpp"
 
 TEST(TestActions, TestBaseAction)
@@ -30,6 +31,25 @@ TEST(TestActions, TestLookAction)
 	look_action.Execute(&scene_object, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(results.m_result_string == "a thing");
+}
+
+TEST(TestActions, TestListInventoryAction)
+{
+	SceneObject scene_object;
+	scene_object.SetDescription("a thing");
+	scene_object.SetID("one");
+
+	ListInventoryAction list_inventory_action;
+	ExecuteResults results;
+	list_inventory_action.Execute(nullptr, results);
+	EXPECT_TRUE(results.m_success);
+	EXPECT_TRUE(results.m_result_string == ListInventoryAction::GetEmptyInventoryString());
+
+	SceneManager::GetInstance()->GetCharacterScene()->AddSceneObject(&scene_object);
+	list_inventory_action.Execute(nullptr, results);
+	EXPECT_TRUE(results.m_success);
+	EXPECT_TRUE(results.m_result_string != ListInventoryAction::GetEmptyInventoryString());
+	SceneManager::GetInstance()->GetCharacterScene()->RemoveSceneObject("one");
 }
 
 TEST(TestActions, TestWalkAction)
