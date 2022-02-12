@@ -24,6 +24,7 @@ public:
 	// get the character scene
 	Scene* GetCharacterScene();
 
+	// callback function when objects change their scene parents
 	std::function<void(SceneObject*, Scene*, Scene*)> m_scene_change_cb;
 
 private:

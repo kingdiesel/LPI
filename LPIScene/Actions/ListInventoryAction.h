@@ -8,6 +8,7 @@ class ListInventoryAction : public BaseAction
 public:
 	ListInventoryAction();
 
+	// Inherited via BaseAction
 	virtual void Execute(std::vector<SceneObject*> payload, ExecuteResults& results) override;
 	virtual void Execute(SceneObject* payload, ExecuteResults& results) override;
 
@@ -16,6 +17,5 @@ public:
 
 	static std::string GetEmptyInventoryString();
 
-	// Inherited via BaseAction
 	virtual void GetFailedActionMessage(std::string& message) override;
 };
