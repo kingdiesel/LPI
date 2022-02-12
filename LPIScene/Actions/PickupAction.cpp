@@ -22,20 +22,29 @@ void PickupAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
 	assert(payload != nullptr);
 	Scene* parent_scene = payload->GetParentScene();
-	if (parent_scene != nullptr)
+	if (parent_scene == SceneManager::GetInstance()->GetCharacterScene())
 	{
-		parent_scene->RemoveSceneObject(payload->GetID());
+		results.m_success = false;
+		results.m_show_result_on_failure = true;
+		results.m_result_string = "You're already holding that.\n";
 	}
-	SceneManager::GetInstance()->GetCharacterScene()->AddSceneObject(payload);
-	SceneManager::GetInstance()->m_scene_change_cb.operator()(
-		payload,
-		parent_scene,
-		SceneManager::GetInstance()->GetCharacterScene()
-	);
-	results.m_success = true;
-	results.m_result_string += "You picked up ";
-	results.m_result_string += payload->GetShortName();
-	results.m_result_string += ".\n";
+	else
+	{
+		if (parent_scene != nullptr)
+		{
+			parent_scene->RemoveSceneObject(payload->GetID());
+		}
+		SceneManager::GetInstance()->GetCharacterScene()->AddSceneObject(payload);
+		SceneManager::GetInstance()->m_scene_change_cb.operator()(
+			payload,
+			parent_scene,
+			SceneManager::GetInstance()->GetCharacterScene()
+			);
+		results.m_success = true;
+		results.m_result_string += "You picked up ";
+		results.m_result_string += payload->GetShortName();
+		results.m_result_string += ".\n";
+	}
 }
 
 bool PickupAction::IsValidPayload(SceneObject* payload)
@@ -54,4 +63,9 @@ bool PickupAction::IsValidPayload(std::vector<SceneObject*> payload)
 		return IsValidPayload(payload[0]);
 	}
 	return false;
+}
+
+void PickupAction::GetFailedActionMessage(std::string& message)
+{
+	message = "You cannot pick that up.\n";
 }

@@ -42,3 +42,8 @@ bool LookAction::IsValidPayload(std::vector<SceneObject*> payload)
 {
 	return payload.size() == 1 || payload.size() == 0;
 }
+
+void LookAction::GetFailedActionMessage(std::string& message)
+{
+	message = "You cannot look at that.\n";
+}

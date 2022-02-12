@@ -48,3 +48,8 @@ std::string ListInventoryAction::GetEmptyInventoryString()
 {
 	return "There is nothing in your inventory.\n";
 }
+
+void ListInventoryAction::GetFailedActionMessage(std::string& message)
+{
+	message = "You cannot see your inventory right now.\n";
+}

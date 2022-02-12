@@ -13,6 +13,9 @@ struct ExecuteResults
 
 	// user facing result string
 	std::string m_result_string;
+
+	// print result string on failure
+	bool m_show_result_on_failure = false;
 };
 
 /*
@@ -39,6 +42,9 @@ public:
 
 	// attempt to execute the action on the payload
 	virtual void Execute(SceneObject* payload, ExecuteResults& results) = 0;
+
+	// general error message
+	virtual void GetFailedActionMessage(std::string& message) = 0;
 private:
 	// verbs that will trigger this action
 	std::vector<std::string> m_verbs;

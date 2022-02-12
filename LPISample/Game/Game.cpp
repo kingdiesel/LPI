@@ -108,7 +108,10 @@ void Game::ProcessCommand(const std::string& command)
 		);
 
 		SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
-
+		if (found_object == nullptr)
+		{
+			found_object = SceneManager::GetInstance()->GetCharacterScene()->FindByNoun(noun);
+		}
 		if (found_action != m_actions.end())
 		{
 			ExecuteResults execute_results;
@@ -120,6 +123,25 @@ void Game::ProcessCommand(const std::string& command)
 				{
 					std::cout << execute_results.m_result_string << std::endl;
 				}
+				else
+				{
+					if (execute_results.m_show_result_on_failure)
+					{
+						std::cout << execute_results.m_result_string << std::endl;
+					}
+					else
+					{
+						std::string fail_message;
+						(*found_action)->GetFailedActionMessage(fail_message);
+						std::cout << fail_message << std::endl;
+					}
+				}
+			}
+			else
+			{
+				std::string fail_message;
+				(*found_action)->GetFailedActionMessage(fail_message);
+				std::cout << fail_message << std::endl;
 			}
 		}
 	}

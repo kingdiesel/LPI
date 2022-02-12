@@ -15,4 +15,7 @@ public:
 	virtual bool IsValidPayload(std::vector<SceneObject*> payload) override;
 
 	static std::string GetEmptyInventoryString();
+
+	// Inherited via BaseAction
+	virtual void GetFailedActionMessage(std::string& message) override;
 };

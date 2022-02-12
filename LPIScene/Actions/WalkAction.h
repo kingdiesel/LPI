@@ -13,4 +13,7 @@ public:
 
 	virtual bool IsValidPayload(SceneObject* payload) override;
 	virtual bool IsValidPayload(std::vector<SceneObject*> payload) override;
+
+	// Inherited via BaseAction
+	virtual void GetFailedActionMessage(std::string& message) override;
 };

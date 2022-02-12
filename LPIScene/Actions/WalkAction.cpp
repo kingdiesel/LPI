@@ -48,3 +48,8 @@ bool WalkAction::IsValidPayload(std::vector<SceneObject*> payload)
 	}
 	return false;
 }
+
+void WalkAction::GetFailedActionMessage(std::string& message)
+{
+	message = "You cannot walk there.\n";
+}
