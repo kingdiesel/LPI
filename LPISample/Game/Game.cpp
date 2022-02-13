@@ -5,8 +5,8 @@
 #include "Actions/PickupAction.h"
 #include "Actions/ListInventoryAction.h"
 #include "Objects/SceneObject.h"
-#include "Objects/SceneInventoryObject.h"
 #include "Components/SceneExitComponent.h"
+#include "Components/InventoryItemComponent.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
@@ -42,7 +42,8 @@ void Game::Init()
 	north_scene_south_exit->SetDescription("You see a llama and greener pastures to the south.\n");
 	north_scene_south_exit->AddNoun("SOUTH");
 
-	SceneObject* key_object = new SceneInventoryObject();
+	SceneObject* key_object = new SceneObject();
+	key_object->AddInventoryItemComponent();
 	key_object->SetID("4");
 	key_object->SetDescription("An old rusty key.\n");
 	key_object->SetShortName("a key");

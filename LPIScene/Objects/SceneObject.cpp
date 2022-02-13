@@ -1,5 +1,6 @@
 #include "SceneObject.h"
 #include "Components/SceneExitComponent.h"
+#include "Components/InventoryItemComponent.h"
 #include <cassert>
 
 const std::string& SceneObject::GetID() const
@@ -91,4 +92,15 @@ void SceneObject::AddSceneExitComponent()
 SceneExitComponent* SceneObject::GetSceneExitComponent()
 {
 	return m_exit_component;
+}
+
+void SceneObject::AddInventoryItemComponent()
+{
+	assert(m_inventory_item_component == nullptr);
+	m_inventory_item_component = new InventoryItemComponent();
+}
+
+InventoryItemComponent* SceneObject::GetInventoryItemComponent()
+{
+	return m_inventory_item_component;
 }

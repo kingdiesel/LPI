@@ -27,6 +27,7 @@ TEST(TestActions, TestLookAction)
 
 	LookAction look_action;
 	ExecuteResults results;
+	EXPECT_TRUE(look_action.IsValidPayload(&scene_object));
 	look_action.Execute(&scene_object, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(results.m_result_string == "a thing");
@@ -40,6 +41,7 @@ TEST(TestActions, TestListInventoryAction)
 
 	ListInventoryAction list_inventory_action;
 	ExecuteResults results;
+	EXPECT_TRUE(list_inventory_action.IsValidPayload(nullptr));
 	list_inventory_action.Execute(nullptr, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(results.m_result_string == ListInventoryAction::GetEmptyInventoryString());
@@ -67,9 +69,11 @@ TEST(TestActions, TestWalkAction)
 	WalkAction walk_action;
 	ExecuteResults results;
 
+	EXPECT_TRUE(walk_action.IsValidPayload(&one_to_two));
 	walk_action.Execute(&one_to_two, results);
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &two_scene);
 	
+	EXPECT_TRUE(walk_action.IsValidPayload(&two_to_one));
 	walk_action.Execute(&two_to_one, results);
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &one_scene);
 
@@ -85,6 +89,7 @@ void SceneChangeTest(SceneObject* payload, Scene* source, Scene* destination)
 TEST(TestActions, TestPickupAction)
 {
 	SceneObject scene_object;
+	scene_object.AddInventoryItemComponent();
 	scene_object.SetDescription("a thing of the past");
 	scene_object.SetShortName("a thing");
 	scene_object.SetID("one");
@@ -98,6 +103,7 @@ TEST(TestActions, TestPickupAction)
 
 	PickupAction pickup_action;
 	ExecuteResults results;
+	EXPECT_TRUE(pickup_action.IsValidPayload(&scene_object));
 	pickup_action.Execute(&scene_object, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCharacterScene()->FindByNoun("thing") == &scene_object);

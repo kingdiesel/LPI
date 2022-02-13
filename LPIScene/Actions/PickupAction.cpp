@@ -1,9 +1,9 @@
 #include "PickupAction.h"
 #include "Objects/SceneObject.h"
 #include "Scene/SceneManager.h"
+#include "Components/InventoryItemComponent.h"
 #include "Scene/Scene.h"
 #include <cassert>
-#include <Objects/SceneInventoryObject.h>
 
 PickupAction::PickupAction()
 {
@@ -49,7 +49,7 @@ void PickupAction::Execute(SceneObject* payload, ExecuteResults& results)
 
 bool PickupAction::IsValidPayload(SceneObject* payload)
 {
-	if (SceneInventoryObject* inventory_object = dynamic_cast<SceneInventoryObject*>(payload))
+	if (InventoryItemComponent* inventory_object = payload->GetInventoryItemComponent())
 	{
 		return true;
 	}

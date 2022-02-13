@@ -45,9 +45,6 @@
     <ClCompile Include="Actions\WalkAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\SceneInventoryObject.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\PickupAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
@@ -55,6 +52,9 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="Components\SceneExitComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\InventoryItemComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,9 +80,6 @@
     <ClInclude Include="Actions\WalkAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\SceneInventoryObject.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\PickupAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
@@ -90,6 +87,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Components\SceneExitComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\InventoryItemComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
