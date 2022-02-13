@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 #include "Scene/Scene.h"
 #include "Objects/SceneObject.cpp"
-#include "Objects/SceneExitObject.h"
 
 TEST(TestObjects, TestID)
 {
@@ -33,15 +32,4 @@ TEST(TestObjects, TestMatching)
 	EXPECT_FALSE(scene_object.MatchesNoun("LLAMA"));
 	EXPECT_FALSE(scene_object.MatchesAdjectiveNoun("BLUE", "LLAMA"));
 	EXPECT_FALSE(scene_object.MatchesAdjectiveNoun("GREEN", "FROG"));
-}
-
-TEST(TestObjects, TestSceneExit)
-{
-	SceneExitObject scene_exit_object;
-	EXPECT_TRUE(scene_exit_object.GetSceneExit() == nullptr);
-	
-	Scene one;
-	SceneExitObject scene_exit_object2(&one);
-	EXPECT_TRUE(scene_exit_object2.GetSceneExit() == &one);
-
 }

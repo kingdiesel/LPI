@@ -23,6 +23,9 @@
     <ClCompile Include="Scene\TestScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Components\TestComponents.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -42,6 +45,9 @@
     </Filter>
     <Filter Include="Scene">
       <UniqueIdentifier>{a17ad393-980d-4f2e-9886-dc6083116097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{2d5610e1-ddfd-4e42-acda-9ef5d996e5ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

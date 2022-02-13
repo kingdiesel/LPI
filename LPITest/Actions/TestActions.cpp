@@ -5,7 +5,6 @@
 #include "Actions/WalkAction.cpp"
 #include "Actions/PickupAction.cpp"
 #include "Actions/ListInventoryAction.cpp"
-#include "Objects/SceneExitObject.cpp"
 
 TEST(TestActions, TestBaseAction)
 {
@@ -55,8 +54,12 @@ TEST(TestActions, TestListInventoryAction)
 TEST(TestActions, TestWalkAction)
 {
 	Scene one_scene, two_scene;
-	SceneExitObject one_to_two(&two_scene);
-	SceneExitObject two_to_one(&one_scene);
+	SceneObject one_to_two;
+	one_to_two.AddSceneExitComponent();
+	one_to_two.GetSceneExitComponent()->SetSceneExit(&two_scene);
+	SceneObject two_to_one;
+	two_to_one.AddSceneExitComponent();
+	two_to_one.GetSceneExitComponent()->SetSceneExit(&one_scene);
 	one_scene.AddSceneObject(&one_to_two);
 	two_scene.AddSceneObject(&two_to_one);
 	SceneManager::GetInstance()->SetCurrentScene(&one_scene);

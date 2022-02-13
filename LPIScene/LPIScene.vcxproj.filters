@@ -19,6 +19,9 @@
     <Filter Include="Util">
       <UniqueIdentifier>{edf24b13-7a4f-4dfb-ba4d-a510fc1d459f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{e5b34a43-c9ea-4238-8bf1-6e231289e3a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene\Scene.cpp">
@@ -42,9 +45,6 @@
     <ClCompile Include="Actions\WalkAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\SceneExitObject.cpp">
-      <Filter>Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Objects\SceneInventoryObject.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
@@ -53,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="Actions\ListInventoryAction.cpp">
       <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\SceneExitComponent.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +80,6 @@
     <ClInclude Include="Actions\WalkAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\SceneExitObject.h">
-      <Filter>Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Objects\SceneInventoryObject.h">
       <Filter>Objects</Filter>
     </ClInclude>
@@ -88,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="Actions\ListInventoryAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SceneExitComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

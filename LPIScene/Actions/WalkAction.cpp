@@ -1,7 +1,8 @@
 #include "WalkAction.h"
-#include "Objects/SceneExitObject.h"
+#include "Components/SceneExitComponent.h"
 #include "Scene/SceneManager.h"
 #include "Scene/Scene.h"
+#include "Objects/SceneObject.h"
 
 WalkAction::WalkAction()
 {
@@ -20,7 +21,7 @@ void WalkAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& resu
 void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
 	results.m_success = false;
-	if (SceneExitObject* scene_exit = dynamic_cast<SceneExitObject*>(payload))
+	if (SceneExitComponent* scene_exit = payload->GetSceneExitComponent())
 	{
 		results.m_success = true;
 		if (Scene* next_scene = scene_exit->GetSceneExit())
@@ -33,7 +34,7 @@ void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 
 bool WalkAction::IsValidPayload(SceneObject* payload)
 {
-	if (SceneExitObject* scene_exit = dynamic_cast<SceneExitObject*>(payload))
+	if (SceneExitComponent* scene_exit = payload->GetSceneExitComponent())
 	{
 		return true;
 	}

@@ -1,4 +1,6 @@
 #include "SceneObject.h"
+#include "Components/SceneExitComponent.h"
+#include <cassert>
 
 const std::string& SceneObject::GetID() const
 {
@@ -78,4 +80,15 @@ const std::string& SceneObject::GetShortName() const
 void SceneObject::SetShortName(const std::string & short_name)
 {
 	m_short_name = short_name;
+}
+
+void SceneObject::AddSceneExitComponent()
+{
+	assert(m_exit_component == nullptr);
+	m_exit_component = new SceneExitComponent();
+}
+
+SceneExitComponent* SceneObject::GetSceneExitComponent()
+{
+	return m_exit_component;
 }

@@ -5,8 +5,8 @@
 #include "Actions/PickupAction.h"
 #include "Actions/ListInventoryAction.h"
 #include "Objects/SceneObject.h"
-#include "Objects/SceneExitObject.h"
 #include "Objects/SceneInventoryObject.h"
+#include "Components/SceneExitComponent.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
@@ -28,12 +28,16 @@ void Game::Init()
 	some_object->SetDescription("A regular looking llama.\n");
 	some_object->AddNoun("LLAMA");
 
-	SceneObject* main_scene_north_exit = new SceneExitObject(&m_north_scene);
+	SceneObject* main_scene_north_exit = new SceneObject();
+	main_scene_north_exit->AddSceneExitComponent();
+	main_scene_north_exit->GetSceneExitComponent()->SetSceneExit(&m_north_scene);
 	main_scene_north_exit->SetID("2");
 	main_scene_north_exit->SetDescription("To the north the grass has a white tint.\n");
 	main_scene_north_exit->AddNoun("NORTH");
 
-	SceneObject* north_scene_south_exit = new SceneExitObject(&m_main_scene);
+	SceneObject* north_scene_south_exit = new SceneObject();
+	north_scene_south_exit->AddSceneExitComponent();
+	north_scene_south_exit->GetSceneExitComponent()->SetSceneExit(&m_main_scene);
 	north_scene_south_exit->SetID("3");
 	north_scene_south_exit->SetDescription("You see a llama and greener pastures to the south.\n");
 	north_scene_south_exit->AddNoun("SOUTH");

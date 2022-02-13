@@ -40,6 +40,7 @@
     <ClCompile Include="BNF\TestBNFExpression.cpp" />
     <ClCompile Include="BNF\TestBNFNode.cpp" />
     <ClCompile Include="BNF\TestBNFSymbol.cpp" />
+    <ClCompile Include="Components\TestComponents.cpp" />
     <ClCompile Include="Lexer\TestLexer.cpp" />
     <ClCompile Include="Objects\TestObjects.cpp" />
     <ClCompile Include="pch.cpp">

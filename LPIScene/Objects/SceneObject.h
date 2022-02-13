@@ -45,6 +45,10 @@ public:
 
 	// developer facing name
 	virtual std::string GetDebugName() const;
+
+	// component API
+	void AddSceneExitComponent();
+	class SceneExitComponent* GetSceneExitComponent();
 private:
 	// globally unique identifier for this scene object
 	std::string m_id;
@@ -63,4 +67,7 @@ private:
 
 	// parent scene (can be null)
 	Scene* m_parent_scene = nullptr;
+
+	// Component list
+	class SceneExitComponent* m_exit_component = nullptr;
 };
