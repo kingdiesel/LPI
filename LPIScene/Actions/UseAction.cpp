@@ -3,6 +3,7 @@
 #include "Scene/SceneManager.h"
 #include "Scene/Scene.h"
 #include "Components/UseComponent.h"
+#include "Components/InventoryItemComponent.h"
 #include <cassert>
 
 UseAction::UseAction()
@@ -23,14 +24,25 @@ void UseAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& resul
 
 void UseAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
-	results.m_success = true;
 	if (payload != nullptr)
 	{
-		results.m_result_string = payload->GetDescription();
-	}
-	else
-	{
-		results.m_result_string = SceneManager::GetInstance()->GetCurrentScene()->GetSceneDescription();
+		results.m_success = true;
+		results.m_result_string = SceneManager::GetInstance()->m_scene_object_used_cb.operator()(
+			payload,
+			nullptr
+		);
+		
+		// if this is a destroy on use item
+		if (payload->GetInventoryItemComponent() != nullptr && payload->GetInventoryItemComponent()->GetDestroyOnUse())
+		{
+			// and it's in the player's inventory
+			if (payload->GetParentScene() == SceneManager::GetInstance()->GetCharacterScene())
+			{
+				// destroy it
+				SceneObject* destroyed_object = payload->GetParentScene()->RemoveSceneObject(payload->GetID());
+				delete destroyed_object;
+			}
+		}
 	}
 }
 

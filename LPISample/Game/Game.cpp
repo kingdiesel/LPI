@@ -8,6 +8,7 @@
 #include "Objects/SceneObject.h"
 #include "Components/SceneExitComponent.h"
 #include "Components/InventoryItemComponent.h"
+#include "Components/UseComponent.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
@@ -46,18 +47,31 @@ void Game::Init()
 
 	SceneObject* key_object = new SceneObject();
 	key_object->AddInventoryItemComponent();
+	key_object->AddUseComponent();
+	key_object->GetUseComponent()->SetUsable(false);
 	key_object->SetID("4");
 	key_object->SetDescription("An old rusty key.\n");
 	key_object->SetShortName("a key");
 	key_object->AddNoun("KEY");
 
+	SceneObject* tissue_object = new SceneObject();
+	tissue_object->AddInventoryItemComponent();
+	tissue_object->GetInventoryItemComponent()->SetDestroyOnUse(true);
+	tissue_object->AddUseComponent();
+	tissue_object->GetUseComponent()->SetUsable(false);
+	tissue_object->SetID("5");
+	tissue_object->SetDescription("A fresh tissue.\n");
+	tissue_object->SetShortName("a fresh tissue");
+	tissue_object->AddNoun("TISSUE");
+
 	// setup scene
 	m_main_scene.AddSceneObject(main_scene_north_exit);
 	m_main_scene.AddSceneObject(some_object);
 	m_main_scene.AddSceneObject(key_object);
+	m_main_scene.AddSceneObject(tissue_object);
 	m_main_scene.SetSceneDescription(
 		"You stand in a grass field that stretches to the horizon in every direction.\n"
-		"A llama is nearby. A key lays on the ground. There is an exit to the north.\n"
+		"A llama is nearby. A key and a tissue lay on the ground. There is an exit to the north.\n"
 	);
 
 	m_north_scene.AddSceneObject(north_scene_south_exit);
@@ -165,13 +179,48 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 {
 	if (payload->GetID() == "4" && destination->GetID() == "INVENTORY_SCENE")
 	{
-		m_main_scene.SetSceneDescription(
-			"You stand in a grass field that stretches to the horizon in every direction.\n"
-			"A llama is nearby. There is an exit to the north.\n"
-		);
+		payload->GetUseComponent()->SetUsable(true);
+		if (!m_picked_up_tissue)
+		{
+			m_main_scene.SetSceneDescription(
+				"You stand in a grass field that stretches to the horizon in every direction.\n"
+				"A llama is nearby. A tissue lays on the ground. There is an exit to the north.\n"
+			);
+		}
+		else
+		{
+			m_main_scene.SetSceneDescription(
+				"You stand in a grass field that stretches to the horizon in every direction.\n"
+				"A llama is nearby. There is an exit to the north.\n"
+			);
+		}
+	}
+	else if (payload->GetID() == "5" && destination->GetID() == "INVENTORY_SCENE")
+	{
+		payload->GetUseComponent()->SetUsable(true);
+		if (!m_picked_up_key)
+		{
+			m_main_scene.SetSceneDescription(
+				"You stand in a grass field that stretches to the horizon in every direction.\n"
+				"A llama is nearby. A key lays on the ground. There is an exit to the north.\n"
+			);
+		}
+		else
+		{
+			m_main_scene.SetSceneDescription(
+				"You stand in a grass field that stretches to the horizon in every direction.\n"
+				"A llama is nearby. There is an exit to the north.\n"
+			);
+		}
 	}
 }
 
-void Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
+std::string Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
 {
+	if (payload->GetID() == "5" && payload2 == nullptr)
+	{
+		return "You blow your nose and the tissue is destroyed.\n";
+	}
+
+	return "UH OH\n";
 }

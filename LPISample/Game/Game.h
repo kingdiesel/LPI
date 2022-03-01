@@ -11,9 +11,13 @@ public:
 	void ProcessCommand(const std::string& command);
 private:
 	void SceneChangeCallback(SceneObject* payload, Scene* source, Scene* destination);
-	void ObjectUsedCallback(SceneObject* payload, SceneObject* payload2);
+	std::string ObjectUsedCallback(SceneObject* payload, SceneObject* payload2);
 	std::vector<class BaseAction*> m_actions;
 	Scene m_main_scene;
 	Scene m_north_scene;
 	BNF m_grammar;
+
+	// game specific
+	bool m_picked_up_tissue = false;
+	bool m_picked_up_key = false;
 };

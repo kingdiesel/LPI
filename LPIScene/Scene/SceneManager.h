@@ -29,7 +29,7 @@ public:
 	
 	// callback function when an object is used, second object will be nullptr
 	// if it's a unary use
-	std::function<void(SceneObject*, SceneObject*)> m_scene_object_used_cb;
+	std::function<std::string(SceneObject*, SceneObject*)> m_scene_object_used_cb;
 
 private:
 	// internal singleton variables
