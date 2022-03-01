@@ -53,6 +53,9 @@ public:
 	void AddInventoryItemComponent();
 	class InventoryItemComponent* GetInventoryItemComponent();
 
+	void AddUseComponent();
+	class UseComponent* GetUseComponent();
+
 private:
 	// globally unique identifier for this scene object
 	std::string m_id;
@@ -75,4 +78,5 @@ private:
 	// Component list
 	class SceneExitComponent* m_exit_component = nullptr;
 	class InventoryItemComponent* m_inventory_item_component = nullptr;
+	class UseComponent* m_use_component = nullptr;
 };

@@ -26,6 +26,10 @@ public:
 
 	// callback function when objects change their scene parents
 	std::function<void(SceneObject*, Scene*, Scene*)> m_scene_change_cb;
+	
+	// callback function when an object is used, second object will be nullptr
+	// if it's a unary use
+	std::function<void(SceneObject*, SceneObject*)> m_scene_object_used_cb;
 
 private:
 	// internal singleton variables

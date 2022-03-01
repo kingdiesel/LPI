@@ -1,6 +1,7 @@
 #include "SceneObject.h"
 #include "Components/SceneExitComponent.h"
 #include "Components/InventoryItemComponent.h"
+#include "Components/UseComponent.h"
 #include <cassert>
 
 const std::string& SceneObject::GetID() const
@@ -103,4 +104,14 @@ void SceneObject::AddInventoryItemComponent()
 InventoryItemComponent* SceneObject::GetInventoryItemComponent()
 {
 	return m_inventory_item_component;
+}
+
+void SceneObject::AddUseComponent()
+{
+	m_use_component = new UseComponent();
+}
+
+UseComponent* SceneObject::GetUseComponent()
+{
+	return m_use_component;
 }

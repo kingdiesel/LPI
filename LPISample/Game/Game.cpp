@@ -4,6 +4,7 @@
 #include "Actions/WalkAction.h"
 #include "Actions/PickupAction.h"
 #include "Actions/ListInventoryAction.h"
+#include "Actions/UseAction.h"
 #include "Objects/SceneObject.h"
 #include "Components/SceneExitComponent.h"
 #include "Components/InventoryItemComponent.h"
@@ -21,6 +22,7 @@ void Game::Init()
 	m_actions.push_back(new WalkAction());
 	m_actions.push_back(new PickupAction());
 	m_actions.push_back(new ListInventoryAction());
+	m_actions.push_back(new UseAction());
 	
 	// setup scene objects
 	SceneObject* some_object = new SceneObject();
@@ -76,6 +78,13 @@ void Game::Init()
 		std::placeholders::_1,
 		std::placeholders::_2,
 		std::placeholders::_3
+	);
+
+	SceneManager::GetInstance()->m_scene_object_used_cb = std::bind(
+		&Game::ObjectUsedCallback,
+		this,
+		std::placeholders::_1,
+		std::placeholders::_2
 	);
 }
 
@@ -161,4 +170,8 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 			"A llama is nearby. There is an exit to the north.\n"
 		);
 	}
+}
+
+void Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
+{
 }
