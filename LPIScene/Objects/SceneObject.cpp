@@ -84,6 +84,16 @@ void SceneObject::SetShortName(const std::string & short_name)
 	m_short_name = short_name;
 }
 
+void SceneObject::SetIsValid(const bool is_valid)
+{
+	m_is_valid = is_valid;
+}
+
+bool SceneObject::GetIsValid() const
+{
+	return m_is_valid;
+}
+
 void SceneObject::AddSceneExitComponent()
 {
 	assert(m_exit_component == nullptr);

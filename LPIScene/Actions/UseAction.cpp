@@ -33,22 +33,20 @@ void UseAction::Execute(SceneObject* payload, ExecuteResults& results)
 		);
 		
 		// if this is a destroy on use item
-		if (payload->GetInventoryItemComponent() != nullptr && payload->GetInventoryItemComponent()->GetDestroyOnUse())
+		if (payload->GetUseComponent()->GetDestroyOnUse())
 		{
-			// and it's in the player's inventory
-			if (payload->GetParentScene() == SceneManager::GetInstance()->GetCharacterScene())
-			{
-				// destroy it
-				SceneObject* destroyed_object = payload->GetParentScene()->RemoveSceneObject(payload->GetID());
-				delete destroyed_object;
-			}
+			// destroy it
+			SceneObject* destroyed_object = payload->GetParentScene()->RemoveSceneObject(payload->GetID());
+			// TODO: memory leak
+			destroyed_object->SetIsValid(false);
 		}
 	}
 }
 
 bool UseAction::IsValidPayload(SceneObject* payload)
 {
-	return payload->GetUseComponent() != nullptr && payload->GetUseComponent()->GetUsable();
+	return payload != nullptr && payload->GetIsValid() && 
+		payload->GetUseComponent() != nullptr && payload->GetUseComponent()->GetUsable();
 }
 
 bool UseAction::IsValidPayload(std::vector<SceneObject*> payload)

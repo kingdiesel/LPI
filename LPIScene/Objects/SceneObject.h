@@ -43,6 +43,10 @@ public:
 	void SetParentScene(Scene* parent_scene);
 	Scene* GetParentScene() const;
 
+	// validity accessors
+	void SetIsValid(const bool is_valid);
+	bool GetIsValid() const;
+
 	// developer facing name
 	virtual std::string GetDebugName() const;
 
@@ -74,6 +78,9 @@ private:
 
 	// parent scene (can be null)
 	Scene* m_parent_scene = nullptr;
+
+	// is this still object still valid, not destroyed
+	bool m_is_valid = true;
 
 	// Component list
 	class SceneExitComponent* m_exit_component = nullptr;

@@ -34,11 +34,8 @@ void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 
 bool WalkAction::IsValidPayload(SceneObject* payload)
 {
-	if (SceneExitComponent* scene_exit = payload->GetSceneExitComponent())
-	{
-		return true;
-	}
-	return false;
+	return payload != nullptr && payload->GetIsValid() &&
+		payload->GetSceneExitComponent() != nullptr;
 }
 
 bool WalkAction::IsValidPayload(std::vector<SceneObject*> payload)

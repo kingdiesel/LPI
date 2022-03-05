@@ -4,6 +4,7 @@
 #include "Actions/LookAction.cpp"
 #include "Actions/WalkAction.cpp"
 #include "Actions/PickupAction.cpp"
+#include "Actions/UseAction.cpp"
 #include "Actions/ListInventoryAction.cpp"
 
 TEST(TestActions, TestBaseAction)
@@ -28,6 +29,10 @@ TEST(TestActions, TestLookAction)
 	LookAction look_action;
 	ExecuteResults results;
 	EXPECT_TRUE(look_action.IsValidPayload(&scene_object));
+	EXPECT_TRUE(look_action.IsValidPayload(nullptr));
+	scene_object.SetIsValid(false);
+	EXPECT_FALSE(look_action.IsValidPayload(&scene_object));
+	scene_object.SetIsValid(true);
 	look_action.Execute(&scene_object, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(results.m_result_string == "a thing");
@@ -42,6 +47,8 @@ TEST(TestActions, TestListInventoryAction)
 	ListInventoryAction list_inventory_action;
 	ExecuteResults results;
 	EXPECT_TRUE(list_inventory_action.IsValidPayload(nullptr));
+	EXPECT_TRUE(list_inventory_action.IsValidPayload(std::vector<SceneObject*>()));
+
 	list_inventory_action.Execute(nullptr, results);
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(results.m_result_string == ListInventoryAction::GetEmptyInventoryString());
@@ -64,12 +71,19 @@ TEST(TestActions, TestWalkAction)
 	two_to_one.GetSceneExitComponent()->SetSceneExit(&one_scene);
 	one_scene.AddSceneObject(&one_to_two);
 	two_scene.AddSceneObject(&two_to_one);
+	SceneObject non_exit;
 	SceneManager::GetInstance()->SetCurrentScene(&one_scene);
 	
 	WalkAction walk_action;
 	ExecuteResults results;
 
 	EXPECT_TRUE(walk_action.IsValidPayload(&one_to_two));
+	EXPECT_FALSE(walk_action.IsValidPayload(&non_exit));
+	one_to_two.SetIsValid(false);
+	EXPECT_FALSE(walk_action.IsValidPayload(&one_to_two));
+	one_to_two.SetIsValid(true);
+	EXPECT_FALSE(walk_action.IsValidPayload(nullptr));
+
 	walk_action.Execute(&one_to_two, results);
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCurrentScene() == &two_scene);
 	
@@ -104,11 +118,60 @@ TEST(TestActions, TestPickupAction)
 	PickupAction pickup_action;
 	ExecuteResults results;
 	EXPECT_TRUE(pickup_action.IsValidPayload(&scene_object));
+	scene_object.SetIsValid(false);
+	EXPECT_FALSE(pickup_action.IsValidPayload(&scene_object));
+	scene_object.SetIsValid(true);
+	EXPECT_FALSE(pickup_action.IsValidPayload(nullptr));
 	pickup_action.Execute(&scene_object, results);
+
 	EXPECT_TRUE(results.m_success);
 	EXPECT_TRUE(SceneManager::GetInstance()->GetCharacterScene()->FindByNoun("thing") == &scene_object);
 	EXPECT_TRUE(scene_object.GetParentScene() == SceneManager::GetInstance()->GetCharacterScene());
 	EXPECT_TRUE(scene.FindByNoun("thing") == nullptr);
 
 	SceneManager::GetInstance()->m_scene_change_cb = nullptr;
+}
+
+std::string ObjectUsedTest(SceneObject* payload, SceneObject* payload2)
+{
+	return "success";
+}
+
+TEST(TestActions, TestUseAction)
+{
+	SceneObject scene_object;
+	scene_object.SetDescription("a thing of the past");
+	scene_object.SetShortName("a thing");
+	scene_object.SetID("one");
+	scene_object.AddNoun("thing");
+
+	Scene scene;
+	scene.AddSceneObject(&scene_object);
+	scene.SetID("TestUseActionScene");
+
+	SceneManager::GetInstance()->m_scene_object_used_cb = ObjectUsedTest;
+
+	UseAction use_action;
+	ExecuteResults results;
+	EXPECT_FALSE(use_action.IsValidPayload(&scene_object));
+	scene_object.AddUseComponent();
+	scene_object.GetUseComponent()->SetUsable(false);
+	EXPECT_FALSE(use_action.IsValidPayload(&scene_object));
+	scene_object.GetUseComponent()->SetUsable(true);
+	scene_object.SetIsValid(false);
+	EXPECT_FALSE(use_action.IsValidPayload(&scene_object));
+	scene_object.SetIsValid(true);
+	EXPECT_FALSE(use_action.IsValidPayload(nullptr));
+
+	use_action.Execute(&scene_object, results);
+	EXPECT_TRUE(results.m_success);
+	EXPECT_TRUE(results.m_result_string == "success");
+
+	scene_object.GetUseComponent()->SetDestroyOnUse(true);
+	use_action.Execute(&scene_object, results);
+	EXPECT_TRUE(results.m_success);
+	EXPECT_TRUE(results.m_result_string == "success");
+	EXPECT_FALSE(scene_object.GetIsValid());
+
+	SceneManager::GetInstance()->m_scene_object_used_cb = nullptr;
 }

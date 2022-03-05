@@ -16,13 +16,7 @@ TEST(TestComponents, TestSceneExit)
 
 TEST(TestComponents, TestInventoryItemComponent)
 {
-	InventoryItemComponent inventory_component;
-	
-	inventory_component.SetDestroyOnUse(false);
-	EXPECT_FALSE(inventory_component.GetDestroyOnUse());
-
-	inventory_component.SetDestroyOnUse(true);
-	EXPECT_TRUE(inventory_component.GetDestroyOnUse());
+	//InventoryItemComponent inventory_component;
 }
 
 TEST(TestComponents, TestUseComponent)
@@ -34,4 +28,10 @@ TEST(TestComponents, TestUseComponent)
 
 	usable_component.SetUsable(true);
 	EXPECT_TRUE(usable_component.GetUsable());
+
+	usable_component.SetDestroyOnUse(false);
+	EXPECT_FALSE(usable_component.GetDestroyOnUse());
+
+	usable_component.SetDestroyOnUse(true);
+	EXPECT_TRUE(usable_component.GetDestroyOnUse());
 }

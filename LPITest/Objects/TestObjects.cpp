@@ -18,6 +18,14 @@ TEST(TestObjects, TestDescription)
 	EXPECT_TRUE(scene_object.GetDescription() == "a thing");
 }
 
+TEST(TestObjects, TestValid)
+{
+	SceneObject scene_object;
+	EXPECT_TRUE(scene_object.GetIsValid());
+	scene_object.SetIsValid(false);
+	EXPECT_FALSE(scene_object.GetIsValid());
+}
+
 TEST(TestObjects, TestMatching)
 {
 	SceneObject scene_object;

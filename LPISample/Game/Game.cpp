@@ -56,9 +56,9 @@ void Game::Init()
 
 	SceneObject* tissue_object = new SceneObject();
 	tissue_object->AddInventoryItemComponent();
-	tissue_object->GetInventoryItemComponent()->SetDestroyOnUse(true);
 	tissue_object->AddUseComponent();
 	tissue_object->GetUseComponent()->SetUsable(false);
+	tissue_object->GetUseComponent()->SetDestroyOnUse(true);
 	tissue_object->SetID("5");
 	tissue_object->SetDescription("A fresh tissue.\n");
 	tissue_object->SetShortName("a fresh tissue");
