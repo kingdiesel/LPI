@@ -1,10 +1,10 @@
 ; basic adventure game grammar, <command> must always be present, it's the expected root
-<command> ::= <unary_verb> | <verb> <noun> | <verb> <preposition> <noun> | <verb> <adjective> <noun> | <verb> <adjective> <noun> <preposition> <adjective> <noun>
+<command> ::= <unary_verb> | <verb> <noun> | <verb> <noun> <preposition> <noun> | <verb> <preposition> <noun> | <verb> <adjective> <noun> | <verb> <adjective> <noun> <preposition> <adjective> <noun>
 <unary_verb> ::= LOOK | HELP | INVENTORY
 <verb> ::= PICKUP | INSERT | GIVE | WALK | ASK | LOOK | GO | TAKE | GET | USE
 <adjective> ::= BLUE | RUSTY | THIRSTY | EMPTY | OLD
-<preposition> ::= INTO | TO | ABOUT | AT
+<preposition> ::= INTO | TO | ABOUT | AT | ON
 <noun> ::= <noun_direction> | <noun_animal> | <noun_object>
 <noun_direction> ::= NORTH | SOUTH | EAST | WEST
 <noun_animal> ::= FROG | LLAMA | GOAT
-<noun_object> ::= KEY | LOCK | WATERFLASK | TISSUE
+<noun_object> ::= KEY | LOCK | WATERFLASK | TISSUE | DOOR

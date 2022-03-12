@@ -23,7 +23,7 @@ void Scene::AddSceneObject(SceneObject* scene_object)
 SceneObject* Scene::RemoveSceneObject(const std::string& id)
 {
 	// find object by id
-	auto found_object = std::remove_if(m_scene_objects.begin(), m_scene_objects.end(),
+	auto found_object = std::find_if(m_scene_objects.begin(), m_scene_objects.end(),
 		[&id](const SceneObject* object)
 		{
 			return object->GetID() == id;

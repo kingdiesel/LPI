@@ -113,6 +113,8 @@ void Game::ProcessCommand(const std::string& command)
 	std::vector<BNFMatchResult> match_results;
 	lexer.MatchString(command, match_results, m_grammar);
 
+	// todo need to modify this function to accomodate 
+	// <verb> <noun> <preposition> <noun>
 	std::string verb, noun;
 	for (const BNFMatchResult& match_result : match_results)
 	{
