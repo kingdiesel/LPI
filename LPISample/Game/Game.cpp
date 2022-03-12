@@ -215,12 +215,18 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 	}
 }
 
-std::string Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
+UseResults Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
 {
+	UseResults use_results;
 	if (payload->GetID() == "5" && payload2 == nullptr)
 	{
-		return "You blow your nose and the tissue is destroyed.\n";
+		use_results.m_success = true;
+		use_results.m_result_string = "You blow your nose and the tissue is destroyed.\n";
 	}
-
-	return "UH OH\n";
+	else
+	{
+		use_results.m_success = false;
+		use_results.m_result_string = "UH OH\n";
+	}
+	return use_results;
 }

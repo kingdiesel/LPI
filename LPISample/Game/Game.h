@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Scene/Scene.h"
+#include "Scene/SceneManager.h"
 #include "BNF/BNF.h"
 
 class Game
@@ -11,7 +12,7 @@ public:
 	void ProcessCommand(const std::string& command);
 private:
 	void SceneChangeCallback(SceneObject* payload, Scene* source, Scene* destination);
-	std::string ObjectUsedCallback(SceneObject* payload, SceneObject* payload2);
+	UseResults ObjectUsedCallback(SceneObject* payload, SceneObject* payload2);
 	std::vector<class BaseAction*> m_actions;
 	Scene m_main_scene;
 	Scene m_north_scene;

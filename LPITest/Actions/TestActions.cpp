@@ -132,9 +132,25 @@ TEST(TestActions, TestPickupAction)
 	SceneManager::GetInstance()->m_scene_change_cb = nullptr;
 }
 
-std::string ObjectUsedTest(SceneObject* payload, SceneObject* payload2)
+UseResults ObjectUsedTest(SceneObject* payload, SceneObject* payload2)
 {
-	return "success";
+	UseResults use_result;
+	use_result.m_result_string = "success";
+	use_result.m_success = true;
+	return use_result;
+}
+
+TEST(TestActions, TestExecuteUseInteraction)
+{
+	ExecuteResults exec_results;
+	UseResults use_results;
+	use_results.m_success = true;
+	use_results.m_result_string = "1234";
+
+	exec_results = use_results;
+	EXPECT_TRUE(exec_results.m_success);
+	EXPECT_TRUE(exec_results.m_show_result_on_failure);
+	EXPECT_TRUE(exec_results.m_result_string == use_results.m_result_string);
 }
 
 TEST(TestActions, TestUseAction)

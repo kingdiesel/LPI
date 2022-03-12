@@ -16,6 +16,9 @@ struct ExecuteResults
 
 	// print result string on failure
 	bool m_show_result_on_failure = false;
+
+	// equal helper to initialize an execute from a use
+	void operator=(const struct UseResults& use_results);
 };
 
 /*

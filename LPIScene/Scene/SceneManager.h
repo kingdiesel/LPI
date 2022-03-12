@@ -4,6 +4,19 @@
 #include <memory>
 #include <mutex>
 #include "Scene.h"
+/*
+	Use object result struct, a return value from the use function to 
+	all the scene to fill custom use responses and reject uses based
+	on scene state
+*/
+struct UseResults
+{
+	// did the action succeed
+	bool m_success = false;
+
+	// user facing result string
+	std::string m_result_string;
+};
 
 /*
 	Global singleton for scene management. Contains the currently active scene
@@ -29,7 +42,7 @@ public:
 	
 	// callback function when an object is used, second object will be nullptr
 	// if it's a unary use
-	std::function<std::string(SceneObject*, SceneObject*)> m_scene_object_used_cb;
+	std::function<UseResults(SceneObject*, SceneObject*)> m_scene_object_used_cb;
 
 private:
 	// internal singleton variables

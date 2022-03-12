@@ -14,9 +14,18 @@ UseAction::UseAction()
 void UseAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& results)
 {
 	results.m_success = false;
-	if (payload.size() == 1)
+	if (payload.size() == 1) // unary use
 	{
 		return Execute(payload[0], results);
+	}
+	else // binary use
+	{
+		SceneObject* use_object = payload[0];
+		SceneObject* use_target = payload[1];
+		results = SceneManager::GetInstance()->m_scene_object_used_cb.operator()(
+			use_object,
+			use_target
+		);
 	}
 	
 	return Execute(nullptr, results);
@@ -26,8 +35,7 @@ void UseAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
 	if (payload != nullptr)
 	{
-		results.m_success = true;
-		results.m_result_string = SceneManager::GetInstance()->m_scene_object_used_cb.operator()(
+		results = SceneManager::GetInstance()->m_scene_object_used_cb.operator()(
 			payload,
 			nullptr
 		);
@@ -51,18 +59,18 @@ bool UseAction::IsValidPayload(SceneObject* payload)
 
 bool UseAction::IsValidPayload(std::vector<SceneObject*> payload)
 {
-	if (!(payload.size() == 1 || payload.size() == 2))
+	// unary use
+	if (payload.size() == 1)
 	{
-		return false;
+		return IsValidPayload(payload[0]);
 	}
-	for (SceneObject* object : payload)
+	else if (payload.size() == 2)
 	{
-		if (!IsValidPayload(object))
-		{
-			return false;
-		}
+		const bool valid_use_object = IsValidPayload(payload[0]);
+		const bool valid_target = payload[1] != nullptr && payload[1]->GetIsValid();
+		return valid_use_object && valid_target;
 	}
-	return true;
+	return false;
 }
 
 void UseAction::GetFailedActionMessage(std::string& message)
