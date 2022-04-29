@@ -57,18 +57,27 @@ void Game::Init()
 	SceneObject* tissue_object = new SceneObject();
 	tissue_object->AddInventoryItemComponent();
 	tissue_object->AddUseComponent();
-	tissue_object->GetUseComponent()->SetUsable(false);
+	tissue_object->GetUseComponent()->SetUsable(true);
 	tissue_object->GetUseComponent()->SetDestroyOnUse(true);
 	tissue_object->SetID("5");
 	tissue_object->SetDescription("A fresh tissue.\n");
 	tissue_object->SetShortName("a fresh tissue");
 	tissue_object->AddNoun("TISSUE");
 
+	SceneObject* slime_object = new SceneObject();
+	slime_object->AddUseComponent();
+	slime_object->GetUseComponent()->SetUsable(true);
+	slime_object->SetID("6");
+	slime_object->SetDescription("A pile of slime.\n");
+	slime_object->SetShortName("slime");
+	slime_object->AddNoun("SLIME");
+
 	// setup scene
 	m_main_scene.AddSceneObject(main_scene_north_exit);
 	m_main_scene.AddSceneObject(some_object);
 	m_main_scene.AddSceneObject(key_object);
 	m_main_scene.AddSceneObject(tissue_object);
+	m_main_scene.AddSceneObject(slime_object);
 	m_main_scene.SetSceneDescription(
 		"You stand in a grass field that stretches to the horizon in every direction.\n"
 		"A llama is nearby. A key and a tissue lay on the ground. There is an exit to the north.\n"
@@ -115,7 +124,8 @@ void Game::ProcessCommand(const std::string& command)
 
 	// todo need to modify this function to accomodate 
 	// <verb> <noun> <preposition> <noun>
-	std::string verb, noun;
+	std::string verb;
+	std::vector<std::string> nouns;
 	for (const BNFMatchResult& match_result : match_results)
 	{
 		if (LPIUtil::IsVerb(match_result.m_symbol))
@@ -124,7 +134,7 @@ void Game::ProcessCommand(const std::string& command)
 		}
 		else if (LPIUtil::IsNoun(match_result.m_symbol))
 		{
-			noun = match_result.m_expression_term.value;
+			nouns.push_back(match_result.m_expression_term.value);
 		}
 	}
 
@@ -137,17 +147,27 @@ void Game::ProcessCommand(const std::string& command)
 			}
 		);
 
-		SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
-		if (found_object == nullptr)
+		std::vector<SceneObject*> payload;
+		for (std::string noun : nouns)
 		{
-			found_object = SceneManager::GetInstance()->GetCharacterScene()->FindByNoun(noun);
+			SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
+			if (found_object == nullptr)
+			{
+				found_object = SceneManager::GetInstance()->GetCharacterScene()->FindByNoun(noun);
+			}
+			
+			if (found_object != nullptr)
+			{
+				payload.push_back(found_object);
+			}
 		}
+		
 		if (found_action != m_actions.end())
 		{
 			ExecuteResults execute_results;
-			if ((*found_action)->IsValidPayload(found_object))
+			if ((*found_action)->IsValidPayload(payload))
 			{
-				(*found_action)->Execute(found_object, execute_results);
+				(*found_action)->Execute(payload, execute_results);
 
 				if (execute_results.m_success)
 				{
@@ -196,6 +216,7 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 				"A llama is nearby. There is an exit to the north.\n"
 			);
 		}
+		m_picked_up_key = true;
 	}
 	else if (payload->GetID() == "5" && destination->GetID() == "INVENTORY_SCENE")
 	{
@@ -214,16 +235,28 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 				"A llama is nearby. There is an exit to the north.\n"
 			);
 		}
+		m_picked_up_tissue = true;
 	}
 }
 
 UseResults Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
 {
 	UseResults use_results;
-	if (payload->GetID() == "5" && payload2 == nullptr)
+	if (payload->GetID() == "5")
 	{
-		use_results.m_success = true;
-		use_results.m_result_string = "You blow your nose and the tissue is destroyed.\n";
+		if (payload2 == nullptr)
+		{
+			use_results.m_success = true;
+			use_results.m_result_string = "You blow your nose and the tissue is destroyed.\n";
+		}
+		else if (payload2->GetID() == "6")
+		{
+			use_results.m_success = true;
+			use_results.m_result_string = "You wipe up the slime at the tissue is destroyed.\n";
+			// TODO: memory leak
+			payload2->GetParentScene()->RemoveSceneObject(payload2->GetID());
+			payload2->SetIsValid(false);
+		}
 	}
 	else
 	{

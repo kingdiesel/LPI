@@ -26,6 +26,15 @@ void UseAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& resul
 			use_object,
 			use_target
 		);
+
+		// if this is a destroy on use item
+		if (use_object->GetUseComponent()->GetDestroyOnUse())
+		{
+			// destroy it
+			SceneObject* destroyed_object = use_object->GetParentScene()->RemoveSceneObject(use_object->GetID());
+			// TODO: memory leak
+			destroyed_object->SetIsValid(false);
+		}
 	}
 	
 	return Execute(nullptr, results);

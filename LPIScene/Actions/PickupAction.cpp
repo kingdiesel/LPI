@@ -15,7 +15,14 @@ PickupAction::PickupAction()
 
 void PickupAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& results)
 {
-	assert(false);
+	if (payload.size() == 1)
+	{
+		Execute(payload[0], results);
+	}
+	else
+	{
+		assert(false);
+	}
 }
 
 void PickupAction::Execute(SceneObject* payload, ExecuteResults& results)

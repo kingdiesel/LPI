@@ -6,5 +6,5 @@
 <preposition> ::= INTO | TO | ABOUT | AT | ON
 <noun> ::= <noun_direction> | <noun_animal> | <noun_object>
 <noun_direction> ::= NORTH | SOUTH | EAST | WEST
-<noun_animal> ::= FROG | LLAMA | GOAT
+<noun_animal> ::= FROG | LLAMA | GOAT | SLIME
 <noun_object> ::= KEY | LOCK | WATERFLASK | TISSUE | DOOR

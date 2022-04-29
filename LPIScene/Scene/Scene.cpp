@@ -38,7 +38,7 @@ SceneObject* Scene::RemoveSceneObject(const std::string& id)
 	}
 
 	// remove from list
-	m_scene_objects.erase(found_object, m_scene_objects.end());
+	m_scene_objects.erase(found_object);
 	return return_value;
 }
 
