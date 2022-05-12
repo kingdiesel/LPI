@@ -35,10 +35,11 @@ SceneObject* Scene::RemoveSceneObject(const std::string& id)
 	if (return_value != nullptr)
 	{
 		return_value->SetParentScene(nullptr);
+		// remove from list
+		m_scene_objects.erase(found_object);
+		return return_value;
 	}
 
-	// remove from list
-	m_scene_objects.erase(found_object);
 	return return_value;
 }
 

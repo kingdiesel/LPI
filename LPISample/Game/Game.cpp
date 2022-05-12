@@ -148,7 +148,7 @@ void Game::ProcessCommand(const std::string& command)
 		);
 
 		std::vector<SceneObject*> payload;
-		for (std::string noun : nouns)
+		for (const std::string& noun : nouns)
 		{
 			SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
 			if (found_object == nullptr)
@@ -252,7 +252,7 @@ UseResults Game::ObjectUsedCallback(SceneObject* payload, SceneObject* payload2)
 		else if (payload2->GetID() == "6")
 		{
 			use_results.m_success = true;
-			use_results.m_result_string = "You wipe up the slime at the tissue is destroyed.\n";
+			use_results.m_result_string = "You wipe up the slime and the tissue is destroyed.\n";
 			// TODO: memory leak
 			payload2->GetParentScene()->RemoveSceneObject(payload2->GetID());
 			payload2->SetIsValid(false);
