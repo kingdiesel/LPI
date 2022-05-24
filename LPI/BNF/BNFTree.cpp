@@ -43,3 +43,20 @@ bool BNFTree::Match(const std::vector<std::string>& tokens, std::vector<BNFMatch
 {
 	return m_tree_root->Match(tokens, out_result);
 }
+
+void BNFTree::GetTokenDescriptors(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
+{
+	for (const std::string& token_string : tokens)
+	{
+		for (const BNFNode& node : m_nodes)
+		{
+			if (node.GetExpression().GetNumTerms() == 1)
+			{
+				if (node.GetExpression().GetExpressionTerms()[0].value == token_string)
+				{
+					out_result.emplace_back(BNFMatchResult(node.GetSymbol(), node.GetExpression().GetExpressionTerms()[0]));
+				}
+			}
+		}
+	}
+}

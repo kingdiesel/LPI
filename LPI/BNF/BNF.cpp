@@ -118,3 +118,9 @@ bool BNF::Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResu
 	assert(m_tree != nullptr);
 	return m_tree->Match(tokens, out_result);
 }
+
+void BNF::GetTokenDescriptors(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
+{
+	assert(m_tree != nullptr);
+	return m_tree->GetTokenDescriptors(tokens, out_result);
+}

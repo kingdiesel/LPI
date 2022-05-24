@@ -34,6 +34,24 @@ TEST(TestLexer, TestBasicGrammarParsing)
 	EXPECT_TRUE(parsed_grammar);
 }
 
+TEST(TestLexer, TestTokenDescriptors)
+{
+	BNF grammar;
+	const bool parsed_grammar = grammar.ParseString(TestLexerStrings::advanced_grammar);
+	EXPECT_TRUE(parsed_grammar);
+
+	Lexer lexer;
+	{
+		const std::vector<std::string> terms = { "LOOK", "HELP", "PICKUP", "BLUE", "INTO", "NORTH", "FROG", "KEY"};
+		for (const std::string& term : terms)
+		{
+			std::vector<BNFMatchResult> result;
+			lexer.GetTokenDescriptorsFromString(term, result, grammar);
+			EXPECT_TRUE(result.size() == 1 ? result[0].m_expression_term.value == term : false);
+		}
+	}
+}
+
 TEST(TestLexer, TestIntermediateGrammarParsing)
 {
 	BNF grammar;

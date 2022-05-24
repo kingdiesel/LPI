@@ -9,6 +9,7 @@ public:
 	void AddNode(const BNFNode& node);
 	void Populate();
 	bool Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
+	void GetTokenDescriptors(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result);
 
 private:
 	std::vector<BNFNode> m_nodes;

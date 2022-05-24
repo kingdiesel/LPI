@@ -50,3 +50,14 @@ bool Lexer::MatchTokens(const std::vector<std::string>& tokens, std::vector<BNFM
 {
 	return grammar.Match(tokens, results);
 }
+
+void Lexer::GetTokenDescriptorsFromString(const std::string& match_string, std::vector<BNFMatchResult>& results, BNF& grammar)
+{
+	std::regex regex_split_spaces("\\s");
+	std::vector<std::string> tokens
+	(
+		std::sregex_token_iterator(match_string.begin(), match_string.end(), regex_split_spaces, -1),
+		std::sregex_token_iterator()
+	);
+	grammar.GetTokenDescriptors(tokens, results);
+}

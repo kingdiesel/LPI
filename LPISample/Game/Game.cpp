@@ -120,78 +120,79 @@ void Game::ProcessCommand(const std::string& command)
 {
 	Lexer lexer;
 	std::vector<BNFMatchResult> match_results;
-	lexer.MatchString(command, match_results, m_grammar);
+	const bool matched = lexer.MatchString(command, match_results, m_grammar);
 
-	// todo need to modify this function to accomodate 
-	// <verb> <noun> <preposition> <noun>
-	std::string verb;
-	std::vector<std::string> nouns;
-	for (const BNFMatchResult& match_result : match_results)
+	if (matched)
 	{
-		if (LPIUtil::IsVerb(match_result.m_symbol))
+		std::string verb;
+		std::vector<std::string> nouns;
+		for (const BNFMatchResult& match_result : match_results)
 		{
-			verb = match_result.m_expression_term.value;
-		}
-		else if (LPIUtil::IsNoun(match_result.m_symbol))
-		{
-			nouns.push_back(match_result.m_expression_term.value);
-		}
-	}
-
-	if (verb.length() != 0)
-	{
-		auto found_action = std::find_if(m_actions.begin(), m_actions.end(),
-			[&verb](const BaseAction* action)
+			if (LPIUtil::IsVerb(match_result.m_symbol))
 			{
-				return action->MatchesVerb(verb);
+				verb = match_result.m_expression_term.value;
 			}
-		);
-
-		std::vector<SceneObject*> payload;
-		for (const std::string& noun : nouns)
-		{
-			SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
-			if (found_object == nullptr)
+			else if (LPIUtil::IsNoun(match_result.m_symbol))
 			{
-				found_object = SceneManager::GetInstance()->GetCharacterScene()->FindByNoun(noun);
-			}
-			
-			if (found_object != nullptr)
-			{
-				payload.push_back(found_object);
+				nouns.push_back(match_result.m_expression_term.value);
 			}
 		}
-		
-		if (found_action != m_actions.end())
-		{
-			ExecuteResults execute_results;
-			if ((*found_action)->IsValidPayload(payload))
-			{
-				(*found_action)->Execute(payload, execute_results);
 
-				if (execute_results.m_success)
+		if (verb.length() != 0)
+		{
+			auto found_action = std::find_if(m_actions.begin(), m_actions.end(),
+				[&verb](const BaseAction* action)
 				{
-					std::cout << execute_results.m_result_string << std::endl;
+					return action->MatchesVerb(verb);
 				}
-				else
+			);
+
+			std::vector<SceneObject*> payload;
+			for (const std::string& noun : nouns)
+			{
+				SceneObject* found_object = SceneManager::GetInstance()->GetCurrentScene()->FindByNoun(noun);
+				if (found_object == nullptr)
 				{
-					if (execute_results.m_show_result_on_failure)
+					found_object = SceneManager::GetInstance()->GetCharacterScene()->FindByNoun(noun);
+				}
+
+				if (found_object != nullptr)
+				{
+					payload.push_back(found_object);
+				}
+			}
+
+			if (found_action != m_actions.end())
+			{
+				ExecuteResults execute_results;
+				if ((*found_action)->IsValidPayload(payload))
+				{
+					(*found_action)->Execute(payload, execute_results);
+
+					if (execute_results.m_success)
 					{
 						std::cout << execute_results.m_result_string << std::endl;
 					}
 					else
 					{
-						std::string fail_message;
-						(*found_action)->GetFailedActionMessage(fail_message);
-						std::cout << fail_message << std::endl;
+						if (execute_results.m_show_result_on_failure)
+						{
+							std::cout << execute_results.m_result_string << std::endl;
+						}
+						else
+						{
+							std::string fail_message;
+							(*found_action)->GetFailedActionMessage(fail_message);
+							std::cout << fail_message << std::endl;
+						}
 					}
 				}
-			}
-			else
-			{
-				std::string fail_message;
-				(*found_action)->GetFailedActionMessage(fail_message);
-				std::cout << fail_message << std::endl;
+				else
+				{
+					std::string fail_message;
+					(*found_action)->GetFailedActionMessage(fail_message);
+					std::cout << fail_message << std::endl;
+				}
 			}
 		}
 	}
