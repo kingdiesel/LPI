@@ -12,6 +12,7 @@
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
+#include <cassert>
 
 void Game::Init()
 {
@@ -189,6 +190,31 @@ void Game::ProcessCommand(const std::string& command)
 				}
 				else
 				{
+					std::string fail_message;
+					(*found_action)->GetFailedActionMessage(fail_message);
+					std::cout << fail_message << std::endl;
+				}
+			}
+		}
+	}
+	else
+	{
+		assert(match_results.size() == 0);
+		lexer.GetTokenDescriptorsFromString(command, match_results, m_grammar);
+		if (match_results.size() >= 1)
+		{
+			if (LPIUtil::IsVerb(match_results[0].m_symbol))
+			{
+				const std::string verb = match_results[0].m_expression_term.value;
+				if (verb.length() != 0)
+				{
+					auto found_action = std::find_if(m_actions.begin(), m_actions.end(),
+						[&verb](const BaseAction* action)
+						{
+							return action->MatchesVerb(verb);
+						}
+					);
+					
 					std::string fail_message;
 					(*found_action)->GetFailedActionMessage(fail_message);
 					std::cout << fail_message << std::endl;
