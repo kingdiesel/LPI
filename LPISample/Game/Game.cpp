@@ -201,6 +201,7 @@ void Game::ProcessCommand(const std::string& command)
 	{
 		assert(match_results.size() == 0);
 		lexer.GetTokenDescriptorsFromString(command, match_results, m_grammar);
+		std::string fail_message = "You don't know how to do that.\n";
 		if (match_results.size() >= 1)
 		{
 			if (LPIUtil::IsVerb(match_results[0].m_symbol))
@@ -214,13 +215,11 @@ void Game::ProcessCommand(const std::string& command)
 							return action->MatchesVerb(verb);
 						}
 					);
-					
-					std::string fail_message;
 					(*found_action)->GetFailedActionMessage(fail_message);
-					std::cout << fail_message << std::endl;
 				}
 			}
 		}
+		std::cout << fail_message << std::endl;
 	}
 }
 
