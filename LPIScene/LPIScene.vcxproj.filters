@@ -63,6 +63,9 @@
     <ClCompile Include="Actions\UseAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Components\ComponentInterface.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="Actions\UseAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ComponentInterface.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

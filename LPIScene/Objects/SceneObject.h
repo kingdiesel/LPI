@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 #include <vector>
-
+#include "Components/ComponentInterface.h"
 class Scene;
-class SceneObject
+class SceneObject : public ComponentInterface
 {
 public:
 	SceneObject() = default;
@@ -50,19 +50,6 @@ public:
 	// developer facing name
 	virtual std::string GetDebugName() const;
 
-	// component API
-	void AddSceneExitComponent();
-	const class SceneExitComponent* GetSceneExitComponent() const;
-	class SceneExitComponent* GetSceneExitComponent();
-
-	void AddInventoryItemComponent();
-	const class InventoryItemComponent* GetInventoryItemComponent() const;
-	class InventoryItemComponent* GetInventoryItemComponent();
-
-	void AddUseComponent();
-	const class UseComponent* GetUseComponent() const;
-	class UseComponent* GetUseComponent();
-
 private:
 	// globally unique identifier for this scene object
 	std::string m_id;
@@ -84,9 +71,4 @@ private:
 
 	// is this still object still valid, not destroyed
 	bool m_is_valid = true;
-
-	// Component list
-	class SceneExitComponent* m_exit_component = nullptr;
-	class InventoryItemComponent* m_inventory_item_component = nullptr;
-	class UseComponent* m_use_component = nullptr;
 };
