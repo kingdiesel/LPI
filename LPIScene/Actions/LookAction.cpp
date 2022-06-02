@@ -33,12 +33,12 @@ void LookAction::Execute(SceneObject* payload, ExecuteResults& results)
 	}
 }
 
-bool LookAction::IsValidPayload(SceneObject* payload)
+bool LookAction::IsValidPayload(const SceneObject* payload) const
 {
 	return payload == nullptr || (payload != nullptr && payload->GetIsValid());
 }
 
-bool LookAction::IsValidPayload(std::vector<SceneObject*> payload)
+bool LookAction::IsValidPayload(const std::vector<SceneObject*> payload) const
 {
 	return payload.size() == 1 || payload.size() == 0;
 }

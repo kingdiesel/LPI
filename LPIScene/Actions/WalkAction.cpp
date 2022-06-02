@@ -21,7 +21,7 @@ void WalkAction::Execute(std::vector<SceneObject*> payload, ExecuteResults& resu
 void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 {
 	results.m_success = false;
-	if (SceneExitComponent* scene_exit = payload->GetSceneExitComponent())
+	if (const SceneExitComponent* scene_exit = payload->GetSceneExitComponent())
 	{
 		results.m_success = true;
 		if (Scene* next_scene = scene_exit->GetSceneExit())
@@ -32,13 +32,13 @@ void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 	}
 }
 
-bool WalkAction::IsValidPayload(SceneObject* payload)
+bool WalkAction::IsValidPayload(const SceneObject* payload) const
 {
 	return payload != nullptr && payload->GetIsValid() &&
 		payload->GetSceneExitComponent() != nullptr;
 }
 
-bool WalkAction::IsValidPayload(std::vector<SceneObject*> payload)
+bool WalkAction::IsValidPayload(const std::vector<SceneObject*> payload) const
 {
 	if (payload.size() == 1)
 	{

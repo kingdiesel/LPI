@@ -52,12 +52,15 @@ public:
 
 	// component API
 	void AddSceneExitComponent();
+	const class SceneExitComponent* GetSceneExitComponent() const;
 	class SceneExitComponent* GetSceneExitComponent();
 
 	void AddInventoryItemComponent();
+	const class InventoryItemComponent* GetInventoryItemComponent() const;
 	class InventoryItemComponent* GetInventoryItemComponent();
 
 	void AddUseComponent();
+	const class UseComponent* GetUseComponent() const;
 	class UseComponent* GetUseComponent();
 
 private:

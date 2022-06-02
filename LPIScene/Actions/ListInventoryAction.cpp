@@ -34,12 +34,12 @@ void ListInventoryAction::Execute(SceneObject* payload, ExecuteResults& results)
 	}
 }
 
-bool ListInventoryAction::IsValidPayload(SceneObject* payload)
+bool ListInventoryAction::IsValidPayload(const SceneObject* payload) const
 {
 	return payload == nullptr;
 }
 
-bool ListInventoryAction::IsValidPayload(std::vector<SceneObject*> payload)
+bool ListInventoryAction::IsValidPayload(const std::vector<SceneObject*> payload) const
 {
 	return payload.size() == 0;
 }

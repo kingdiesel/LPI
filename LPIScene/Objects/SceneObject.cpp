@@ -100,6 +100,11 @@ void SceneObject::AddSceneExitComponent()
 	m_exit_component = new SceneExitComponent();
 }
 
+const SceneExitComponent* SceneObject::GetSceneExitComponent() const
+{
+	return m_exit_component;
+}
+
 SceneExitComponent* SceneObject::GetSceneExitComponent()
 {
 	return m_exit_component;
@@ -111,6 +116,11 @@ void SceneObject::AddInventoryItemComponent()
 	m_inventory_item_component = new InventoryItemComponent();
 }
 
+const InventoryItemComponent* SceneObject::GetInventoryItemComponent() const
+{
+	return m_inventory_item_component;
+}
+
 InventoryItemComponent* SceneObject::GetInventoryItemComponent()
 {
 	return m_inventory_item_component;
@@ -119,6 +129,11 @@ InventoryItemComponent* SceneObject::GetInventoryItemComponent()
 void SceneObject::AddUseComponent()
 {
 	m_use_component = new UseComponent();
+}
+
+const UseComponent* SceneObject::GetUseComponent() const
+{
+	return m_use_component;
 }
 
 UseComponent* SceneObject::GetUseComponent()

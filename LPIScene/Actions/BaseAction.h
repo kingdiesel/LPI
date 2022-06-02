@@ -35,10 +35,10 @@ public:
 	bool MatchesVerb(const std::string& verb) const;
 
 	// does this action support payload as a valid target
-	virtual bool IsValidPayload(SceneObject* payload) = 0;
+	virtual bool IsValidPayload(const SceneObject* payload) const = 0;
 
 	// does this action support thie multi object payload as a target
-	virtual bool IsValidPayload(std::vector<SceneObject*> payload) = 0;
+	virtual bool IsValidPayload(const std::vector<SceneObject*> payload) const = 0;
 
 	// attempt to execute the action on the payloads
 	virtual void Execute(std::vector<SceneObject*> payload, ExecuteResults& results) = 0;

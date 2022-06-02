@@ -54,13 +54,13 @@ void PickupAction::Execute(SceneObject* payload, ExecuteResults& results)
 	}
 }
 
-bool PickupAction::IsValidPayload(SceneObject* payload)
+bool PickupAction::IsValidPayload(const SceneObject* payload) const
 {
 	return payload != nullptr && payload->GetIsValid() &&
 		payload->GetInventoryItemComponent() != nullptr;
 }
 
-bool PickupAction::IsValidPayload(std::vector<SceneObject*> payload)
+bool PickupAction::IsValidPayload(const std::vector<SceneObject*> payload) const
 {
 	if (payload.size() == 1)
 	{

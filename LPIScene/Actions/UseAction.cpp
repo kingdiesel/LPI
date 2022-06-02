@@ -60,13 +60,13 @@ void UseAction::Execute(SceneObject* payload, ExecuteResults& results)
 	}
 }
 
-bool UseAction::IsValidPayload(SceneObject* payload)
+bool UseAction::IsValidPayload(const SceneObject* payload) const
 {
 	return payload != nullptr && payload->GetIsValid() && 
 		payload->GetUseComponent() != nullptr && payload->GetUseComponent()->GetUsable();
 }
 
-bool UseAction::IsValidPayload(std::vector<SceneObject*> payload)
+bool UseAction::IsValidPayload(const std::vector<SceneObject*> payload) const
 {
 	// unary use
 	if (payload.size() == 1)
