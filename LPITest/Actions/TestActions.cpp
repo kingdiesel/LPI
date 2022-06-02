@@ -66,6 +66,8 @@ TEST(TestActions, TestListInventoryAction)
 TEST(TestActions, TestWalkAction)
 {
 	Scene one_scene, two_scene;
+	one_scene.AddDescriptionComponent();
+	two_scene.AddDescriptionComponent();
 	SceneObject one_to_two;
 	one_to_two.AddSceneExitComponent();
 	one_to_two.GetSceneExitComponent()->SetSceneExit(&two_scene);

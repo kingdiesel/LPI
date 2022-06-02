@@ -5,12 +5,14 @@
 #include <algorithm>
 #include "Game/Game.h"
 #include "Scene/SceneManager.h"
+#include "Components/DescriptionComponent.h"
+
 int main()
 {
 	Game game;
 	game.Init();
 
-	std::cout << SceneManager::GetInstance()->GetCurrentScene()->GetSceneDescription() << std::endl << std::endl;
+	std::cout << SceneManager::GetInstance()->GetCurrentScene()->GetDescriptionComponent()->GetDescription() << std::endl << std::endl;
 	
 	while (1)
 	{

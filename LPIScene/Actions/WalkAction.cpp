@@ -1,5 +1,6 @@
 #include "WalkAction.h"
 #include "Components/SceneExitComponent.h"
+#include "Components/DescriptionComponent.h"
 #include "Scene/SceneManager.h"
 #include "Scene/Scene.h"
 #include "Objects/SceneObject.h"
@@ -27,7 +28,7 @@ void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 		if (Scene* next_scene = scene_exit->GetSceneExit())
 		{
 			SceneManager::GetInstance()->SetCurrentScene(next_scene);
-			results.m_result_string = next_scene->GetSceneDescription();
+			results.m_result_string = next_scene->GetDescriptionComponent()->GetDescription();
 		}
 	}
 }
@@ -35,7 +36,7 @@ void WalkAction::Execute(SceneObject* payload, ExecuteResults& results)
 bool WalkAction::IsValidPayload(const SceneObject* payload) const
 {
 	return payload != nullptr && payload->GetIsValid() &&
-		payload->GetSceneExitComponent() != nullptr;
+		payload->GetSceneExitComponent() != nullptr && payload->GetSceneExitComponent()->GetSceneExit()->GetDescriptionComponent() != nullptr;
 }
 
 bool WalkAction::IsValidPayload(const std::vector<SceneObject*> payload) const

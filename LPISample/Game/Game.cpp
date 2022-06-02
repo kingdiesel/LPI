@@ -86,13 +86,15 @@ void Game::Init()
 	m_main_scene.AddSceneObject(key_object);
 	m_main_scene.AddSceneObject(tissue_object);
 	m_main_scene.AddSceneObject(slime_object);
-	m_main_scene.SetSceneDescription(
+	m_main_scene.AddDescriptionComponent();
+	m_main_scene.GetDescriptionComponent()->SetDescription(
 		"You stand in a grass field that stretches to the horizon in every direction.\n"
 		"A llama is nearby. A key and a tissue lay on the ground. There is an exit to the north.\n"
 	);
 
 	m_north_scene.AddSceneObject(north_scene_south_exit);
-	m_north_scene.SetSceneDescription(
+	m_north_scene.AddDescriptionComponent();
+	m_north_scene.GetDescriptionComponent()->SetDescription(
 		"Lots of snow here. You see a llama and greener pastures to the south.\n"
 	);
 
@@ -237,14 +239,14 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 		payload->GetUseComponent()->SetUsable(true);
 		if (!m_picked_up_tissue)
 		{
-			m_main_scene.SetSceneDescription(
+			m_main_scene.GetDescriptionComponent()->SetDescription(
 				"You stand in a grass field that stretches to the horizon in every direction.\n"
 				"A llama is nearby. A tissue lays on the ground. There is an exit to the north.\n"
 			);
 		}
 		else
 		{
-			m_main_scene.SetSceneDescription(
+			m_main_scene.GetDescriptionComponent()->SetDescription(
 				"You stand in a grass field that stretches to the horizon in every direction.\n"
 				"A llama is nearby. There is an exit to the north.\n"
 			);
@@ -256,14 +258,14 @@ void Game::SceneChangeCallback(SceneObject* payload, Scene* source, Scene* desti
 		payload->GetUseComponent()->SetUsable(true);
 		if (!m_picked_up_key)
 		{
-			m_main_scene.SetSceneDescription(
+			m_main_scene.GetDescriptionComponent()->SetDescription(
 				"You stand in a grass field that stretches to the horizon in every direction.\n"
 				"A llama is nearby. A key lays on the ground. There is an exit to the north.\n"
 			);
 		}
 		else
 		{
-			m_main_scene.SetSceneDescription(
+			m_main_scene.GetDescriptionComponent()->SetDescription(
 				"You stand in a grass field that stretches to the horizon in every direction.\n"
 				"A llama is nearby. There is an exit to the north.\n"
 			);

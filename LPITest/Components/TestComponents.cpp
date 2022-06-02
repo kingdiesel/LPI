@@ -16,9 +16,11 @@ TEST(TestComponents, TestSceneExit)
 }
 
 
-TEST(TestObjects, TestDescription)
+TEST(TestComponents, TestDescription)
 {
 	DescriptionComponent description_component;
+	EXPECT_TRUE(description_component.GetDescription() == "");
+
 	description_component.SetDescription("a thing");
 	EXPECT_TRUE(description_component.GetDescription() == "a thing");
 }

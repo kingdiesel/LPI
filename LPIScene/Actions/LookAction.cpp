@@ -30,7 +30,7 @@ void LookAction::Execute(SceneObject* payload, ExecuteResults& results)
 	}
 	else
 	{
-		results.m_result_string = SceneManager::GetInstance()->GetCurrentScene()->GetSceneDescription();
+		results.m_result_string = SceneManager::GetInstance()->GetCurrentScene()->GetDescriptionComponent()->GetDescription();
 	}
 }
 

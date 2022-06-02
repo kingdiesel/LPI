@@ -3,12 +3,13 @@
 #include <string>
 #include <map>
 #include <functional>
+#include "Components/ComponentInterface.h"
 
 class SceneObject;
 /*
 	A container for scene objects with a description
 */
-class Scene
+class Scene : public ComponentInterface
 {
 public:
 	Scene() = default;
@@ -25,10 +26,6 @@ public:
 	SceneObject* FindByNoun(const std::string& noun);
 	SceneObject* FindByID(const std::string& ID);
 	
-	// scene description accessors
-	void SetSceneDescription(const std::string& description);
-	std::string GetSceneDescription() const;
-
 	// full scene object list accessor
 	const std::vector<SceneObject*> GetSceneObjects() const;
 

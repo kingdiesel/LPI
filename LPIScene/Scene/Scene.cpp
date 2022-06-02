@@ -76,16 +76,6 @@ SceneObject* Scene::FindByID(const std::string& ID)
 	return nullptr;
 }
 
-void Scene::SetSceneDescription(const std::string& description)
-{
-	m_scene_description = description;
-}
-
-std::string Scene::GetSceneDescription() const
-{
-	return m_scene_description;
-}
-
 const std::vector<SceneObject*> Scene::GetSceneObjects() const
 {
 	return m_scene_objects;
