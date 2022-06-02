@@ -2,6 +2,7 @@
 #include "Components/SceneExitComponent.h"
 #include "Components/InventoryItemComponent.h"
 #include "Components/UseComponent.h"
+#include "Components/DescriptionComponent.h"
 #include <cassert>
 
 void ComponentInterface::AddSceneExitComponent()
@@ -34,6 +35,21 @@ const InventoryItemComponent* ComponentInterface::GetInventoryItemComponent() co
 InventoryItemComponent* ComponentInterface::GetInventoryItemComponent()
 {
 	return m_inventory_item_component;
+}
+
+void ComponentInterface::AddDescriptionComponent()
+{
+	m_description_component = new DescriptionComponent();
+}
+
+const DescriptionComponent* ComponentInterface::GetDescriptionComponent() const
+{
+	return m_description_component;
+}
+
+DescriptionComponent* ComponentInterface::GetDescriptionComponent()
+{
+	return m_description_component;
 }
 
 void ComponentInterface::AddUseComponent()

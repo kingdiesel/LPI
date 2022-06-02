@@ -12,10 +12,6 @@ public:
 	const std::string& GetID() const;
 	void SetID(const std::string& id);
 
-	// description of this scene object
-	const std::string& GetDescription() const;
-	void SetDescription(const std::string& description);
-
 	// short name of this scene object
 	const std::string& GetShortName() const;
 	void SetShortName(const std::string & short_name);

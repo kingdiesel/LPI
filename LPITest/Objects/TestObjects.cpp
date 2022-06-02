@@ -2,20 +2,15 @@
 #include <gtest/gtest.h>
 #include "Scene/Scene.h"
 #include "Objects/SceneObject.cpp"
+#include "Components/ComponentInterface.cpp"
+#include "Components/DescriptionComponent.h"
+
 
 TEST(TestObjects, TestID)
 {
 	SceneObject scene_object;
 	scene_object.SetID("one");
 	EXPECT_TRUE(scene_object.GetID() == "one");
-}
-
-TEST(TestObjects, TestDescription)
-{
-	SceneObject scene_object;
-	scene_object.SetID("one");
-	scene_object.SetDescription("a thing");
-	EXPECT_TRUE(scene_object.GetDescription() == "a thing");
 }
 
 TEST(TestObjects, TestValid)
@@ -30,7 +25,8 @@ TEST(TestObjects, TestMatching)
 {
 	SceneObject scene_object;
 	scene_object.SetID("one");
-	scene_object.SetDescription("a thing");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing");
 	scene_object.AddNoun("FROG");
 	scene_object.AddAdjective("BLUE");
 	EXPECT_TRUE(scene_object.MatchesAdjective("BLUE"));

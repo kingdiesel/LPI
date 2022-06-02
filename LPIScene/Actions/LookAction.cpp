@@ -2,6 +2,7 @@
 #include "Objects/SceneObject.h"
 #include "Scene/SceneManager.h"
 #include "Scene/Scene.h"
+#include "Components/DescriptionComponent.h"
 #include <cassert>
 
 LookAction::LookAction()
@@ -25,7 +26,7 @@ void LookAction::Execute(SceneObject* payload, ExecuteResults& results)
 	results.m_success = true;
 	if (payload != nullptr)
 	{
-		results.m_result_string = payload->GetDescription();
+		results.m_result_string = payload->GetDescriptionComponent()->GetDescription();
 	}
 	else
 	{
@@ -35,12 +36,12 @@ void LookAction::Execute(SceneObject* payload, ExecuteResults& results)
 
 bool LookAction::IsValidPayload(const SceneObject* payload) const
 {
-	return payload == nullptr || (payload != nullptr && payload->GetIsValid());
+	return payload == nullptr || (payload != nullptr && payload->GetIsValid() && payload->GetDescriptionComponent() != nullptr);
 }
 
 bool LookAction::IsValidPayload(const std::vector<SceneObject*> payload) const
 {
-	return payload.size() == 1 || payload.size() == 0;
+	return (payload.size() == 1 && IsValidPayload(payload[0])) || payload.size() == 0;
 }
 
 void LookAction::GetFailedActionMessage(std::string& message)

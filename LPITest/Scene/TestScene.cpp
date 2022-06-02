@@ -2,12 +2,14 @@
 #include <gtest/gtest.h>
 #include "Scene/Scene.cpp"
 #include "Scene/SceneManager.cpp"
+#include "Components/DescriptionComponent.h"
 
 TEST(TestScene, TestScene)
 {
 	SceneObject scene_object;
 	scene_object.SetID("one");
-	scene_object.SetDescription("a thing");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing");
 	scene_object.AddNoun("FROG");
 
 	Scene scene;

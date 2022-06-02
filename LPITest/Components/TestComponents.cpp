@@ -3,6 +3,7 @@
 #include "Components/SceneExitComponent.cpp"
 #include "Components/InventoryItemComponent.cpp"
 #include "Components/UseComponent.cpp"
+#include "Components/DescriptionComponent.cpp"
 
 TEST(TestComponents, TestSceneExit)
 {
@@ -12,6 +13,14 @@ TEST(TestComponents, TestSceneExit)
 	Scene one;
 	SceneExitComponent scene_exit_object2(&one);
 	EXPECT_TRUE(scene_exit_object2.GetSceneExit() == &one);
+}
+
+
+TEST(TestObjects, TestDescription)
+{
+	DescriptionComponent description_component;
+	description_component.SetDescription("a thing");
+	EXPECT_TRUE(description_component.GetDescription() == "a thing");
 }
 
 TEST(TestComponents, TestInventoryItemComponent)

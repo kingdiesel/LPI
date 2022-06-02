@@ -10,7 +10,8 @@
 TEST(TestActions, TestBaseAction)
 {
 	SceneObject scene_object;
-	scene_object.SetDescription("a thing");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing");
 	scene_object.SetID("one");
 
 	LookAction look_action;
@@ -23,7 +24,8 @@ TEST(TestActions, TestBaseAction)
 TEST(TestActions, TestLookAction)
 {
 	SceneObject scene_object;
-	scene_object.SetDescription("a thing");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing");
 	scene_object.SetID("one");
 
 	LookAction look_action;
@@ -41,7 +43,8 @@ TEST(TestActions, TestLookAction)
 TEST(TestActions, TestListInventoryAction)
 {
 	SceneObject scene_object;
-	scene_object.SetDescription("a thing");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing");
 	scene_object.SetID("one");
 
 	ListInventoryAction list_inventory_action;
@@ -104,7 +107,8 @@ TEST(TestActions, TestPickupAction)
 {
 	SceneObject scene_object;
 	scene_object.AddInventoryItemComponent();
-	scene_object.SetDescription("a thing of the past");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing of the past");
 	scene_object.SetShortName("a thing");
 	scene_object.SetID("one");
 	scene_object.AddNoun("thing");
@@ -156,7 +160,8 @@ TEST(TestActions, TestExecuteUseInteraction)
 TEST(TestActions, TestUseAction)
 {
 	SceneObject scene_object;
-	scene_object.SetDescription("a thing of the past");
+	scene_object.AddDescriptionComponent();
+	scene_object.GetDescriptionComponent()->SetDescription("a thing of the past");
 	scene_object.SetShortName("a thing");
 	scene_object.SetID("one");
 	scene_object.AddNoun("thing");

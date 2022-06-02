@@ -64,16 +64,6 @@ std::string SceneObject::GetDebugName() const
 	return "SceneObject";
 }
 
-const std::string& SceneObject::GetDescription() const
-{
-	return m_description;
-}
-
-void SceneObject::SetDescription(const std::string& description)
-{
-	m_description = description;
-}
-
 const std::string& SceneObject::GetShortName() const
 {
 	return m_short_name;

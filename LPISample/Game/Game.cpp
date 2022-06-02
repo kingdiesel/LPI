@@ -9,6 +9,7 @@
 #include "Components/SceneExitComponent.h"
 #include "Components/InventoryItemComponent.h"
 #include "Components/UseComponent.h"
+#include "Components/DescriptionComponent.h"
 #include "Lexer/Lexer.h"
 #include "Util/LPIUtil.h"
 #include "Scene/SceneManager.h"
@@ -29,21 +30,24 @@ void Game::Init()
 	// setup scene objects
 	SceneObject* some_object = new SceneObject();
 	some_object->SetID("1");
-	some_object->SetDescription("A regular looking llama.\n");
+	some_object->AddDescriptionComponent();
+	some_object->GetDescriptionComponent()->SetDescription("A regular looking llama.\n");
 	some_object->AddNoun("LLAMA");
 
 	SceneObject* main_scene_north_exit = new SceneObject();
 	main_scene_north_exit->AddSceneExitComponent();
 	main_scene_north_exit->GetSceneExitComponent()->SetSceneExit(&m_north_scene);
 	main_scene_north_exit->SetID("2");
-	main_scene_north_exit->SetDescription("To the north the grass has a white tint.\n");
+	main_scene_north_exit->AddDescriptionComponent();
+	main_scene_north_exit->GetDescriptionComponent()->SetDescription("To the north the grass has a white tint.\n");
 	main_scene_north_exit->AddNoun("NORTH");
 
 	SceneObject* north_scene_south_exit = new SceneObject();
 	north_scene_south_exit->AddSceneExitComponent();
 	north_scene_south_exit->GetSceneExitComponent()->SetSceneExit(&m_main_scene);
 	north_scene_south_exit->SetID("3");
-	north_scene_south_exit->SetDescription("You see a llama and greener pastures to the south.\n");
+	north_scene_south_exit->AddDescriptionComponent();
+	north_scene_south_exit->GetDescriptionComponent()->SetDescription("You see a llama and greener pastures to the south.\n");
 	north_scene_south_exit->AddNoun("SOUTH");
 
 	SceneObject* key_object = new SceneObject();
@@ -51,7 +55,8 @@ void Game::Init()
 	key_object->AddUseComponent();
 	key_object->GetUseComponent()->SetUsable(false);
 	key_object->SetID("4");
-	key_object->SetDescription("An old rusty key.\n");
+	key_object->AddDescriptionComponent();
+	key_object->GetDescriptionComponent()->SetDescription("An old rusty key.\n");
 	key_object->SetShortName("a key");
 	key_object->AddNoun("KEY");
 
@@ -61,7 +66,8 @@ void Game::Init()
 	tissue_object->GetUseComponent()->SetUsable(true);
 	tissue_object->GetUseComponent()->SetDestroyOnUse(true);
 	tissue_object->SetID("5");
-	tissue_object->SetDescription("A fresh tissue.\n");
+	tissue_object->AddDescriptionComponent();
+	tissue_object->GetDescriptionComponent()->SetDescription("A fresh tissue.\n");
 	tissue_object->SetShortName("a fresh tissue");
 	tissue_object->AddNoun("TISSUE");
 
@@ -69,7 +75,8 @@ void Game::Init()
 	slime_object->AddUseComponent();
 	slime_object->GetUseComponent()->SetUsable(true);
 	slime_object->SetID("6");
-	slime_object->SetDescription("A pile of slime.\n");
+	slime_object->AddDescriptionComponent();
+	slime_object->GetDescriptionComponent()->SetDescription("A pile of slime.\n");
 	slime_object->SetShortName("slime");
 	slime_object->AddNoun("SLIME");
 

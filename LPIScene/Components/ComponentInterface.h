@@ -16,9 +16,14 @@ public:
 	const class UseComponent* GetUseComponent() const;
 	class UseComponent* GetUseComponent();
 
+	void AddDescriptionComponent();
+	const class DescriptionComponent* GetDescriptionComponent() const;
+	class DescriptionComponent* GetDescriptionComponent();
+
 protected:
 	// Component list
 	class SceneExitComponent* m_exit_component = nullptr;
 	class InventoryItemComponent* m_inventory_item_component = nullptr;
 	class UseComponent* m_use_component = nullptr;
+	class DescriptionComponent* m_description_component = nullptr;
 };

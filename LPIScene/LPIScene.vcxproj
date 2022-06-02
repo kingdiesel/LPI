@@ -158,6 +158,7 @@
     <ClCompile Include="Actions\UseAction.cpp" />
     <ClCompile Include="Actions\WalkAction.cpp" />
     <ClCompile Include="Components\ComponentInterface.cpp" />
+    <ClCompile Include="Components\DescriptionComponent.cpp" />
     <ClCompile Include="Components\InventoryItemComponent.cpp" />
     <ClCompile Include="Components\SceneExitComponent.cpp" />
     <ClCompile Include="Components\UseComponent.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Actions\UseAction.h" />
     <ClInclude Include="Actions\WalkAction.h" />
     <ClInclude Include="Components\ComponentInterface.h" />
+    <ClInclude Include="Components\DescriptionComponent.h" />
     <ClInclude Include="Components\InventoryItemComponent.h" />
     <ClInclude Include="Components\SceneExitComponent.h" />
     <ClInclude Include="Components\UseComponent.h" />
