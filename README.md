@@ -3,7 +3,7 @@ Lexer Parser Interpreter intended for use in creating adventure games
 
 ![BuildAndTest](https://github.com/kingdiesel/LPI/actions/workflows/BuildAndTest.yml/badge.svg)
 
-Takes a grammar file in standard [BNF format](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form):
+Takes a grammar file in standard [BNF format](https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form) and stores it in a tree:
 ```
 ; basic adventure game grammar, <command> must always be present, it's the expected root
 <command> ::= <unary_verb> | <verb> <noun> | <verb> <adjective> <noun> | <verb> <adjective> <noun> <preposition> <adjective> <noun>
@@ -17,15 +17,11 @@ Takes a grammar file in standard [BNF format](https://en.wikipedia.org/wiki/Back
 <noun_object> ::= KEY | LOCK | WATERFLASK
 ```
 
-Takes input strings:
+Tokenizes input strings:
 ```
 LOOK
 WALK NORTH
-ASK LLAMA
 PICKUP BLUE FROG
-INSERT RUSTY KEY INTO OLD LOCK
-GIVE EMPTY WATERFLASK TO THIRSTY GOAT
-INVALID
 ```
 
 Matches the tokens in input line to the grammar and returns match results:
@@ -72,6 +68,14 @@ InventoryItemComponent - allows object to be the target of a PickupAction
 
 Implemented sample game
 ```
+You stand in a grass field that stretches to the horizon in every direction.
+A llama is nearby. A key and a tissue lay on the ground. There is an exit to the north.
 
+
+> look north
+To the north the grass has a white tint.
+
+> get key
+You picked up a key.
 ```
 
