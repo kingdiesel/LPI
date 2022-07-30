@@ -28,7 +28,7 @@ GIVE EMPTY WATERFLASK TO THIRSTY GOAT
 INVALID
 ```
 
-Matches the tokens in each line to the grammar and returns match results:
+Matches the tokens in input line to the grammar and returns match results:
 ```
 LOOK matched to
         <unary_verb>:LOOK
@@ -36,23 +36,6 @@ LOOK matched to
 WALK NORTH matched to
         <verb>:WALK
         <noun_direction>:NORTH
-
-ASK LLAMA matched to
-        <verb>:ASK
-        <noun_animal>:LLAMA
-
-PICKUP BLUE FROG matched to
-        <verb>:PICKUP
-        <adjective>:BLUE
-        <noun_animal>:FROG
-
-INSERT RUSTY KEY INTO OLD LOCK matched to
-        <verb>:INSERT
-        <adjective>:RUSTY
-        <noun_object>:KEY
-        <preposition>:INTO
-        <adjective>:OLD
-        <noun_object>:LOCK
 
 GIVE EMPTY WATERFLASK TO THIRSTY GOAT matched to
         <verb>:GIVE
@@ -64,3 +47,31 @@ GIVE EMPTY WATERFLASK TO THIRSTY GOAT matched to
 
 INVALID was not matched.
 ```
+
+Match results mapped to actions:
+```
+LookAction - examines objects
+PickupAction - places objects in inventory
+UseAction - uses objects (use tissue) or on other objects (use key on door)
+WalkAction - scene transitions
+```
+
+Scene with SceneObjects to describe adventure game rooms with components to define object behavior:
+```
+SceneObject* some_object = new SceneObject();
+some_object->SetID("1");
+some_object->AddDescriptionComponent();
+some_object->GetDescriptionComponent()->SetDescription("A regular looking llama.\n");
+some_object->AddNoun("LLAMA");
+       
+DescriptionComponent - allows object to be the target of a LookAction
+UseComponent - allows object to be the target of a UseAction
+SceneExitComponent - allows object to be the target of a WalkAction
+InventoryItemComponent - allows object to be the target of a PickupAction
+```
+
+Implemented sample game
+```
+
+```
+
