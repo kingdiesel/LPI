@@ -160,6 +160,7 @@
     <ClCompile Include="Components\ComponentInterface.cpp" />
     <ClCompile Include="Components\DescriptionComponent.cpp" />
     <ClCompile Include="Components\InventoryItemComponent.cpp" />
+    <ClCompile Include="Components\OpenCloseComponent.cpp" />
     <ClCompile Include="Components\SceneExitComponent.cpp" />
     <ClCompile Include="Components\UseComponent.cpp" />
     <ClCompile Include="Objects\SceneObject.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Components\ComponentInterface.h" />
     <ClInclude Include="Components\DescriptionComponent.h" />
     <ClInclude Include="Components\InventoryItemComponent.h" />
+    <ClInclude Include="Components\OpenCloseComponent.h" />
     <ClInclude Include="Components\SceneExitComponent.h" />
     <ClInclude Include="Components\UseComponent.h" />
     <ClInclude Include="Objects\SceneObject.h" />

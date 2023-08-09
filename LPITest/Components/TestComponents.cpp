@@ -4,7 +4,7 @@
 #include "Components/InventoryItemComponent.cpp"
 #include "Components/UseComponent.cpp"
 #include "Components/DescriptionComponent.cpp"
-
+#include "Components/OpenCloseComponent.cpp"
 TEST(TestComponents, TestSceneExit)
 {
 	SceneExitComponent scene_exit_object;
@@ -28,6 +28,18 @@ TEST(TestComponents, TestDescription)
 TEST(TestComponents, TestInventoryItemComponent)
 {
 	//InventoryItemComponent inventory_component;
+}
+
+TEST(TestComponents, TestOpenCloseComponent)
+{
+	OpenCloseComponent open_component;
+	EXPECT_FALSE(open_component.IsOpen());
+
+	open_component.SetIsOpen(true);
+	EXPECT_TRUE(open_component.IsOpen());
+
+	open_component.SetIsOpen(false);
+	EXPECT_FALSE(open_component.IsOpen());
 }
 
 TEST(TestComponents, TestUseComponent)
