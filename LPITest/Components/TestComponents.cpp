@@ -5,6 +5,7 @@
 #include "Components/UseComponent.cpp"
 #include "Components/DescriptionComponent.cpp"
 #include "Components/OpenCloseComponent.cpp"
+#include "Components/InventoryItemContainerComponent.cpp"
 TEST(TestComponents, TestSceneExit)
 {
 	SceneExitComponent scene_exit_object;
@@ -28,6 +29,45 @@ TEST(TestComponents, TestDescription)
 TEST(TestComponents, TestInventoryItemComponent)
 {
 	//InventoryItemComponent inventory_component;
+}
+
+TEST(TestComponents, TestInventoryItemContainerComponent)
+{
+	InventoryItemContainerComponent inventory_container_component;
+
+	EXPECT_TRUE(inventory_container_component.GetItemCount() == 0);
+	EXPECT_FALSE(inventory_container_component.HasItem("some_id"));
+
+	std::unique_ptr<SceneObject> scene_object = std::make_unique<SceneObject>();
+	scene_object->SetID("some_id");
+
+	inventory_container_component.AddItem(std::move(scene_object));
+	EXPECT_TRUE(inventory_container_component.GetItemCount() == 1);
+	EXPECT_TRUE(inventory_container_component.HasItem("some_id"));
+
+	std::unique_ptr<SceneObject> scene_object_two = std::make_unique<SceneObject>();
+	scene_object_two->SetID("some_other_id");
+
+	inventory_container_component.AddItem(std::move(scene_object_two));
+	EXPECT_TRUE(inventory_container_component.GetItemCount() == 2);
+	EXPECT_TRUE(inventory_container_component.HasItem("some_id"));
+	EXPECT_TRUE(inventory_container_component.HasItem("some_other_id"));
+
+	std::unique_ptr<SceneObject> removed_scene_object = inventory_container_component.RemoveItem("some_id");
+	EXPECT_TRUE(removed_scene_object != nullptr);
+	EXPECT_TRUE(removed_scene_object->GetID() == "some_id");
+	EXPECT_TRUE(inventory_container_component.GetItemCount() == 1);
+	EXPECT_FALSE(inventory_container_component.HasItem("some_id"));
+	EXPECT_TRUE(inventory_container_component.HasItem("some_other_id"));
+
+	std::unique_ptr<SceneObject> removed_scene_object_two = inventory_container_component.RemoveItem("none");
+	EXPECT_TRUE(inventory_container_component.GetItemCount() == 1);
+	EXPECT_TRUE(removed_scene_object_two == nullptr);
+
+	removed_scene_object_two = inventory_container_component.RemoveItem("some_other_id");
+	EXPECT_TRUE(removed_scene_object_two != nullptr);
+	EXPECT_TRUE(removed_scene_object_two->GetID() == "some_other_id");
+	EXPECT_TRUE(inventory_container_component.GetItemCount() == 0);
 }
 
 TEST(TestComponents, TestOpenCloseComponent)

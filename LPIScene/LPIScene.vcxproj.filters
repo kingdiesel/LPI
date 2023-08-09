@@ -72,6 +72,9 @@
     <ClCompile Include="Components\OpenCloseComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\InventoryItemContainerComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -120,6 +123,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\OpenCloseComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\InventoryItemContainerComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
