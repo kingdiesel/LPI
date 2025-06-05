@@ -26,18 +26,20 @@ void BNFNode::AddChild(BNFNode* node)
 
 BNFNode* BNFNode::FindTreeNode(const std::string& symbol)
 {
-	for (BNFNode* child : m_children)
-	{
-		if (child->GetSymbol() == symbol)
-		{
-			return child;
-		}
-		else
-		{
-			return child->FindTreeNode(symbol);
-		}
-	}
-	return nullptr;
+        for (BNFNode* child : m_children)
+        {
+                if (child->GetSymbol() == symbol)
+                {
+                        return child;
+                }
+
+                BNFNode* found = child->FindTreeNode(symbol);
+                if (found != nullptr)
+                {
+                        return found;
+                }
+        }
+        return nullptr;
 }
 
 bool BNFNode::Match(const std::vector<std::string>& tokens, std::vector<BNFMatchResult>& out_result)
